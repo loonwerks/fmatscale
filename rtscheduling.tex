@@ -1,0 +1,50 @@
+% Real-Time Scheduling
+
+\it{temporal isolation} is a technique to reduce timing channels and temporal 
+interference between software threads executing on the same platform. 
+In certain conditions,
+timing channels can be used to violate confidentiality requirements. 
+Temporal interference can reduce availability of time-critical functionality, 
+and impact integrity of controls by inducing selective jitter. 
+For example, if one component is compromised, it could dominate the processor, 
+preventing other components from completing their tasks, placing the security 
+of the entire platform in jeopardy. 
+In mixed-criticality mission systems, 
+multiple threads necessary for mission success often 
+have strict confidentiality, integrity, and availability requirements. 
+Simple scheduling approaches that attempt to use priority schemes to mitigate 
+this impact only protect the highest priority threads.
+
+\briefcase\ achieves \it{temporal isolation} in a real-time
+environment in which threads execute within
+their own scheduled timing constraints without interference from other
+threads hosted on the same platform. To accomplish this, we leveraged
+prior work from safety and security-critical disciplines, such as
+avionics, where temporal isolation in real-time scheduling has been
+deployed for decades. We implemented a static cyclic scheduling
+approach using the \selFour\ domain scheduler, where a fixed schedule
+defines an ordered sequence of static execution slots. Each slot has a
+duration and a partition identifier.  \selFour\ ensures that the
+temporal domain, and any threads running in it, will not exceed their defined
+time allotments. Creation of a valid static cyclic schedule that
+satisfies all the application's timing requirements is the
+responsibility of the system designers.
+
+\briefcase\ generates a start-of-frame synchronization signal for each thread using
+a special thread called the Pacer, which sends periodic signals
+to each thread. Each application thread blocks until it receives its
+signal from the Pacer. The thread runs to complete, and then
+blocks again on the Pacer signal for the next iteration. 
+Each thread subsequently executes
+exactly once during its statically scheduled time slice.
+
+The new \selFour\ Mixed-Criticality Systems (MCS) variant provides
+additional capability that can support temporally isolated
+real-time systems. 
+As part of \briefcase\ we developed a proof-of-concept static cyclic
+scheduler for MCS.
+It includes a start-of-frame signal, which
+eliminates the need for the Pacer component. It also includes kernel
+level support for flexible dynamic scheduling that satisfies some
+real-time properties, such as period and execution time.
+
