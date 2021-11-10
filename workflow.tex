@@ -1,3 +1,14 @@
 %Work Flow
 
-Describe the BriefCASE work flow and tools.
+%Describe the BriefCASE work flow and tools.
+
+% Copied from DESTION paper
+Our BriefCASE toolchain provides systems engineers with a workflow and tool support for developing products with inherent cyber-resiliency.
+BriefCASE is predicated on an MBSE process, in which models are the primary vehicle for communication and understanding among the parties tasked with designing the system. Furthermore, MBSE models are the primary design artifacts used for analysis, verification, testing, and code generation.  
+
+The BriefCASE workflow starts with the development of an AADL model of the system architecture. 
+BriefCASE is implemented as a set of plugins that work with OSATE, the flagship tool for AADL modeling.
+Once an architecture model has been created, it can be analyzed in various ways  (e.g., resource usage, information flow, latency) to determine whether the initial design is acceptable. 
+
+BriefCASE integrates tools that analyze the architecture model for cybersecurity vulnerabilities and generate a set of requirements that, when addressed, will mitigate those vulnerabilities.  
+The generated requirements are imported into the model and represented as goals in a Resolute assurance case.  As a requirement is addressed in the design, the assurance case is updated with evidence, either taken directly from the model or supporting development process outputs, necessary to support the claim.  In this manner, the assurance case is co-developed alongside the system design, and can be automatically evaluated throughout development.
