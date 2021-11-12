@@ -1,0 +1,42 @@
+% Corey, Gerwin -  Budget: 1 column
+% word budget: ~ 400 words
+
+The seL4 microkernel is a lightweight, fast, and secure operating system (OS) kernel.
+Its implementation is fully formally verified from high-level security properties
+down to the binary level~\cite{sel4-formal}. It was the first OS kernel with this
+degree of formal verification, and after more than a decade of further research
+and engineering is still not only the leading formally verified OS kernel, but also
+the fastest OS kernel on the Arm architecture.
+
+Its formal verification makes seL4 the ideal basis for high-assurance systems.
+It is in itself a demonstration of the level of fidelity and scale formal
+verification can achieve. It supports multiple architectures (Arm, x86-64,
+RISC-V), deep security properties such as integrity, confidentiality and
+availability, it comes with formally verified user-level system initialization,
+and as one of multiple available OS personalities, it offers a user-level component
+system that provably achieves isolation between statically specified components.
+
+The formal proofs about seL4 and the corresponding user-level components measure
+over one million lines of proof script in total. They constitute one of the
+largest continually maintained formal proof artifacts in existence and provide a
+rich target for new techniques in proof engineering, proof repair, and
+automation for constructing new proofs about software as well maintaining
+existing large-scale proof artifacts.
+
+While it is essential to build a high-assurance system on a high-assurance OS
+kernel, this is not the main feature seL4 provides for systems engineering --- a
+simpler real-time OS may well be formally verified, but not be sufficient for the
+engineering method described in this paper. The true power of seL4 lies in its
+ability to scale formal analysis and verification to the much larger code bases
+that make up the entire system. It does so by providing strong isolation between
+user-level components.
+
+This isolation means that components can be analyzed separately from each other
+and be composed safely --- seL4 provides the basis for the soundness of the highly
+automated analysis tools such as AGREE can provide. It makes it possible to run
+entire untrusted virtual machines and securely monitor their behavior on the
+same hardware. It makes it possible to provide filter and monitor components and
+prove that these components cannot be tampered with by the components they protect.
+It makes it possible to ensure that the communication channels the analysis tools
+assume are the \emph{only} communication channels that are available to the
+components in the system.
