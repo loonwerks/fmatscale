@@ -1,0 +1,26 @@
+% Compositional Analysis
+
+Once the system's architecture has been modeled using AADL
+and component behavior specified using \agree's assume-guarantee contracts,
+we use \agree's model checker to verify the consistency of these contracts.
+The model checking process verifies that:
+(a) the output guarantees of component implmentations are strong enough to
+validate the input assumptions of downstream components;
+(b) the input assumptions of a component along with the output guarantees of its \emph{sub}-components
+are strong enough to validate its output guarantees.
+For example, in \figref{fig:sw-hardened},
+the input assumptions of the Waypoint Manager must be inferrable from
+the output guarantees of the Geofence monitor;
+and the output guarantees of SW must be inferrable from
+its inputs assumptions combined with the output guarantees of its subcomponents.
+
+This hierachical strategy for reasoning about contracts,
+i.e. \emph{Compositional Analysis},
+reduces the computational complexity of model checking
+by breaking down the larger problem into more manageable fragments (\cite{compositional-analysis-agree}).
+In \figref{fig:sw-hardened}, SW's subcomponents can be broken into further subcomponents,
+and this would, typically, multiply the complexity of the verification process.
+But, in the case of Compositional Analysis (and \agree),
+since verification of a component does not (directly) depend on the contracts of its \emph{sub}-subcomponents,
+this multiplication of complexity does not occur.
+More details in \cite{case-models-2021}.
