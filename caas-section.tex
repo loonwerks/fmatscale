@@ -1,11 +1,57 @@
-Collins Aerospace has successfully demonstrated the CASE methodology and tools on the CH-47F Common Avionics Architecture System (CAAS), utilizing a team of CAAS development engineers.  As an integrated cockpit avionics suite, CAAS serves as a prime example of modern air platform complexity with common avionics across a variety of defense platforms including the Army’s Mission Enhanced Little Bird (MELB) and MH-60, the Navy CH-53K, and the Air Force  KC-135.  As the primary designer and manufacturer of CAAS, Collins Aerospace maintains complete design artifacts including boot loaders, operating systems, software applications, hardware, and bus message specifications.  CAAS offered an opportunity to apply CASE tools across a variety of mission systems including legacy components, flight critical software, as well as new and evolving systems.
+Collins Aerospace has successfully demonstrated the CASE methodology and tools on the CH-47F Common
+Avionics Architecture System (CAAS), utilizing a team of CAAS development engineers. As an
+integrated cockpit avionics suite, CAAS serves as a prime example of modern air platform complexity
+with common avionics across a variety of defense platforms including the Army's Mission Enhanced
+Little Bird (MELB) and MH-60, the Navy CH-53K, and the Air Force KC-135. As the primary designer and
+manufacturer of CAAS, Collins Aerospace maintains complete design artifacts including boot loaders,
+operating systems, software applications, hardware, and bus message specifications. CAAS offered an
+opportunity to apply CASE tools across a variety of mission systems including legacy components,
+flight critical software, as well as new and evolving systems.
 
-Our primary goal was to enable CAAS product engineers to employ the CASE tools to create an operational mission scenario  exhibiting cyber threats and mitigations that could be exercied using the facilities of the Collins CH-47F System Integration Laboratory.  The CH-47F demonstration system for CASE focused on three areas: integrating pilot and soldier wireless tablet computers for increased situational awareness, detecting  attempted Automatic Dependent Surveillance (ADS-B) traffic spoofing, as well as porting the high-assurance seL4 operating sytem to an existing Collins CAAS product processing module.  This processing module, or VPM, is provisioned to allow only vetted traffic to/from the aforementioned wireless clients in order to provide situational awareness data to pilots and soldiers, as well as to provide a platform for the execution of CASE-tool-generated filters, monitors, attestation gates, etc.
+Our primary goal was to enable CAAS product engineers to employ the CASE tools to create an
+operational mission scenario exhibiting cyber threats and mitigations that could be exercied using
+the facilities of the Collins CH-47F System Integration Laboratory. The CH-47F demonstration system
+for CASE focused on three areas: integrating pilot and soldier wireless tablet computers for
+increased situational awareness, detecting attempted Automatic Dependent Surveillance (ADS-B)
+traffic spoofing, as well as porting the high-assurance seL4 operating sytem to an existing Collins
+CAAS product processing module. This processing module, or VPM, is provisioned to allow only vetted
+traffic to/from the aforementioned wireless clients in order to provide situational awareness data
+to pilots and soldiers, as well as to provide a platform for the execution of CASE-tool-generated
+filters, monitors, attestation gates, etc.
 
-The CAAS developers first developed an AADL model of the CH-47F CAAS system.  They then added the enhanced capabilities described above, resulting in a baseline architecture.  The CAAS development engineers then analyzed their baseline AADL architecture utilizing the GearCASE and DCRYPPS tools, resulting in a set of cyber requirements.  They then employed the BriefCASE AADL plug-in to provision filters, monitors, attestation gates, seL4 isolates, etc., in order to satisfy the cyber requirements.  The specifications for the filters and monitors were developed by the CAAS developers using the AGREE contract language, with assistance from the CASE developers, and the SPLAT tool was invoked by BriefCASE in order to synthesize the monitors and filters from the AGREE specifications with high assurance, as described previously.  The HAMR tool was then invoked by BriefCASE in order to synthesize the overall system, including the seL4 CAmkES components, CAmkES I/O, the processing schedule, etc.
+The CAAS developers first developed an AADL model of the CH-47F CAAS system. They then added the
+enhanced capabilities described above, resulting in a baseline architecture. The CAAS development
+engineers then analyzed their baseline AADL architecture utilizing the GearCASE and DCRYPPS tools,
+resulting in a set of cyber requirements. They then employed the BriefCASE AADL plug-in to provision
+filters, monitors, attestation gates, seL4 isolates, etc., in order to satisfy the cyber
+requirements. The specifications for the filters and monitors were developed by the CAAS developers
+using the AGREE contract language, with assistance from the CASE developers, and the SPLAT tool was
+invoked by BriefCASE in order to synthesize the monitors and filters from the AGREE specifications
+with high assurance, as described previously. The HAMR tool was then invoked by BriefCASE in order
+to synthesize the overall system, including the seL4 CAmkES components, CAmkES I/O, the processing
+schedule, etc.
 
-The tablet operating environment utilized either an off-the-shelf Android environment, or a Linux guest OS running on seL4.  This provided the CASE remote attestation team with differing challenges when it came to the measurement and attestation of the tablet platform types, and provided the CASE independent evaluators a variety of options for formulating attacks against the system.  The ADS-B anti-spoofing monitor developed by the CAAS team detected position/velocity trend inconsistencies, duplicate traffic identifiers, as well as ``teleporting'' aircraft.
+The tablet operating environment utilized either an off-the-shelf Android environment, or a Linux
+guest OS running on seL4. This provided the CASE remote attestation team with differing challenges
+when it came to the measurement and attestation of the tablet platform types, and provided the CASE
+independent evaluators a variety of options for formulating attacks against the system. The ADS-B
+anti-spoofing monitor developed by the CAAS team detected position/velocity trend inconsistencies,
+duplicate traffic identifiers, as well as ``teleporting'' aircraft.
 
-The port of the seL4 microkernel to the Collins VPM product was complicated by the need for network proxy/adapters to bridge the untrusted wireless network to the rest of the sytem in a trustworthy manner, including the ability to filter encrypted network traffic payloads.  Fortunately, dedicated processing cores were available on the VPM for the provisioning of these low side and high side proxy/adapters.  This code had to be manually generated due to the complexity of dealing with off-the-shelf networking technologies; automating the synthesis of network adapter/proxy components is future work.  
+The port of the seL4 microkernel to the Collins VPM product was complicated by the need for network
+proxy/adapters to bridge the untrusted wireless network to the rest of the sytem in a trustworthy
+manner, including the ability to filter encrypted network traffic payloads. Fortunately, dedicated
+processing cores were available on the VPM for the provisioning of these low side and high side
+proxy/adapters. This code had to be manually generated due to the complexity of dealing with
+off-the-shelf networking technologies; automating the synthesis of network adapter/proxy components
+is future work.
 
-The CAAS developers experienced tool immaturity/expressiveness/documentation issues, as was to be expected for the first use of a research tool suite by product area developers.  Initial estimates of processing time required to run the monitoring components turned out to be overly optimistic, requiring an optimization effort.  Lack of detailed seL4 support for the target hardware led to more extensive porting efforts for the VPM and tablets than was originally anticipated, and tablet hardware instabilities further hampered the porting effort.  But all in all, the CASE tools were able to be productively used by Collins product area engineers to produce the CH-47F CAAS demonstration system on time and within budget, providing the CASE developers with valuable feedback on the strengths and weaknesses of the current CASE tool envionment.
+The CAAS developers experienced tool immaturity/expressiveness/documentation issues, as was to be
+expected for the first use of a research tool suite by product area developers. Initial estimates of
+processing time required to run the monitoring components turned out to be overly optimistic,
+requiring an optimization effort. Lack of detailed seL4 support for the target hardware led to more
+extensive porting efforts for the VPM and tablets than was originally anticipated, and tablet
+hardware instabilities further hampered the porting effort. But all in all, the CASE tools were able
+to be productively used by Collins product area engineers to produce the CH-47F CAAS demonstration
+system on time and within budget, providing the CASE developers with valuable feedback on the
+strengths and weaknesses of the current CASE tool envionment.

@@ -1,34 +1,40 @@
 %Introduction
-
-Describe our view of the challenges and breakthroughs in the call.
-
-Systems engineers are currently given few
-development tools to help answer basic questions about
-potential cyber vulnerabilities and how to  mitigate them.  Typically, they must rely on
+\chapterinitial{Aerospace systems engineers} are currently given few
+development tools to understand and mitigate 
+potential cybersecurity vulnerabilities and how to  mitigate them.  Typically, they must rely on
 process-oriented checklists and guidelines. Cyber vulnerabilities
 are often discovered during penetration testing late in the
-development process; or worse yet, they may be discovered
+development process. Worse yet, they may be discovered
 only after the product has been fielded, necessitating extremely
 expensive and time-consuming remediation. This is not a
 sustainable development model.
 
-Fortunately, formal methods 
-(define?)
-has advanced to the point that new tools and techniques can 
-be used to address cybersecurity and cyber-resiliency design challenges.  
-
+Fortunately, formal methods tools have advanced to the point that they can 
+be used to address cybersecurity and cyber-resiliency design challenges
+on real high-assuance systems at industrial scale.  
 Our application domain is avionics and aerospace systems in general.  
-Our team has developed a model-based systems engineering (MBSE) 
-envirnoment that 
+They are typically large, real-time cyberphysicial systems with the added 
+complexities of performing safety-critical tasks and being exposed to 
+a wide variety of cybersecurity threats.  Furthermore, they are subject 
+to intense regulatory scrutiny due to the certification requirements of this domain. 
 
-scale to real aerospace systems
-tools to automate capabilities that we prototyped in the HACMS project \cite{HACMS}
-range of properties
-complexity through composition
-integration into tool environoment and language accessible by systems engineers
-Ability to rapidly co-evolve systems and associated evidence; and
-Ease of use for non-expert developers and evaluators.
+In previous work on the High-Assurance Cyber Military Systems (HACMS) project \cite{HACMS}
+we demonstrated that formal methods could be used to dramatically improve the 
+cyber-resiliency of real aircraft, including an unmanned military helicopter.  Our current
+work is focused on automating the capabilities that we prototyped in the HACMS project
+and extending the reach and scale of the formal methods design and verification approach.  
 
- - Applications to specific major systems in government and industry;
- - Tour-de-force results, such as proofs of significant mathematical results or reasoning about modern processors;
- - Advancement of FM ecosystems surrounding the various provers and stacks; and
+To this end, we have developed a model-based systems engineering (MBSE) 
+envirnoment that allows engineers to address a range of properties and 
+manage system complexity through compositional analysis, integrating formal methods
+at all levels of the design process.  The \briefcase tools are based on the 
+Architecture Analysis and Design Language (AADL) and extend the Open Source
+AADL Tool Environment (OSATE).  They are specifically designed 
+to bridge the gap between a user-level modeling language accessible to systems 
+engineers and cutting edge capabilities of the formally verified \selFour microkernel
+and high-assurance components synthesized from forml specification.  
+
+By using these tools to build real avionics systems, we hope to show 
+that current formal methods tools are practical, effective, and scalable to significant 
+high-assurance applications in the aerospace industry.  
+
