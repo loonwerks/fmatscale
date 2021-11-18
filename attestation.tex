@@ -1,0 +1,27 @@
+Semantic remote attestation is a technique for remotely establishing
+trust in running software.  An appraiser requests an attestation from
+a target, receives evidence in response it the request, and appraises
+the evidence to determine
+trust~\cite{Haldar:04:Semantic-Remote,Coker::Principles-of-R}. Because
+remote attestation does not require modification of its measurement
+target, StairCASE utilizes it to establish trust in legacy software
+that cannot otherwise be verified.  We construct a verified remote
+attestation infrastructure around the legacy target that generates
+run-time and boot-time evidence.
+
+The approach adds attestation managers to the seL4-based architecture
+used to harden the attestation target.  Each attestation manager
+executes protocols specified by Copland~\cite{Ramsdell:2019aa}
+phrases.  Copland is a formally specified language designed for
+writing attestation protocols that are both verifiable and executable.
+The attestation managers themselves are written and verified using
+CakeML~\cite{Kumar:2014:CVI:2535838.2535841} and
+Coq~\cite{Bertot:2013aa}.
+
+A separate attestation manager is added to the appraiser to make
+attestation requests and appraise results.  A protocol and nonce are
+sent to the target, evidence is returned, and results appraised to
+determine trust.  The attestation manager then communicates appraisal
+results to the platform communicating with the remote target.  In this
+way the platform appraises a remote target before trusting it to
+behave as expected.
