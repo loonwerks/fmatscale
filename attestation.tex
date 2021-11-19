@@ -9,19 +9,44 @@ that cannot otherwise be verified.  We construct a verified remote
 attestation infrastructure around the legacy target that generates
 run-time and boot-time evidence.
 
-The approach adds attestation managers to the seL4-based architecture
-used to harden the attestation target.  Each attestation manager
-executes protocols specified by Copland~\cite{Ramsdell:2019aa}
+The approach adds three attestation managers to the seL4-based
+architecture used to harden the attestation target.  Each attestation
+manager executes protocols specified by Copland~\cite{Ramsdell:2019aa}
 phrases.  Copland is a formally specified language designed for
 writing attestation protocols that are both verifiable and executable.
 The attestation managers themselves are written and verified using
 CakeML~\cite{Kumar:2014:CVI:2535838.2535841} and
 Coq~\cite{Bertot:2013aa}.
 
-A separate attestation manager is added to the appraiser to make
+The UserAM runs as a Linux process on the seL4 virtual machine.  It's
+responsibilities are responding to attestation requests from off
+platform, measuring the hardened application, and requesting
+attestations from the platform.  When the UserAM receives an
+attestation request it responds by executing an attestation protocol
+that measures the hardened application, requests measurements from the
+PlatformAM, and signs the result and a nonce from the request.  The
+resulting evidence package is returned to the requesting appraiser.
+
+Because the UserAM runs as a process in the Linux kernel, it cannot be
+trusted \emph{a priori}.  A PlatformAM is introduced to perform an
+attestation on the Linux kernel.  The PlatformAM runs as a
+CAmkES component separated from the Linux kernel.  seL4's guaranteed
+separation properties provide assurance that the PlatformAM cannot be
+interfered with by other platform software.  The PlatformAM only
+responds to requests from the UserAM and similarly runs a protocol
+that produces signed results.
+
+A third attestation manager is added to the appraiser to make
 attestation requests and appraise results.  A protocol and nonce are
 sent to the target, evidence is returned, and results appraised to
 determine trust.  The attestation manager then communicates appraisal
 results to the platform communicating with the remote target.  In this
 way the platform appraises a remote target before trusting it to
 behave as expected.
+
+Using the remote attestation system to harden a platform involves
+writing application specific attestation and appraisal components.
+New measurers are constructed for the UserAM that measure the running
+application along with corresponding appraisal code.  The PlatformAM
+and attestation architecture remain the same across applications.  The
+overhead required for hardening is thus minimized.
