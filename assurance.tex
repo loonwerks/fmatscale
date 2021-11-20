@@ -1,0 +1,37 @@
+An important aspect of our work on CASE has been to structure formalizations and proofs by following the AADL description of the system. In other work, we did this through the use of formal assume-guarantee contracts that correspond to the requirements for each component~\cite{HACMS}. We have found that in assuring the cyber-security properties of aircraft designs we need to integrate different kinds of evidence with varying levels of formality. This has been our motivation to explore assurance case methods.
+
+In previous work, we developed the {\em Resolute} language and tool~\cite{resolute2014},~\cite{resolute-destion} as a way to help developers create an assurance argument describing the steps taken during the design process to make the system safe and secure.  
+The Resolute syntax supports construction of assurance cases that comply with the Goal Structuring Notation (GSN) v2 standard~\cite{GSNv2}.  Claims are expressed as \textit{goals} and \textit{strategies}, and can contain attributes such as \textit{context}, \textit{assumptions}, and \textit{justification}.  Claims can be marked \textit{undeveloped}, which Resolute interprets as an unsupported claim, or with a \textit{solution}, which is an explicit assertion that the claim is supported.
+Rather than being a separate document, a Resolute assurance case is part of the architecture model and can refer to elements within the model. Since it is not a static representation, it can ensure that the assurance argument remains consistent with the evolving design.
+
+BriefCASE includes a library of Resolute assurance strategies, or \textit{patterns}, that align with the CASE workflow.  The patterns are instantiated with context from the AADL model, and specify the evidence required to support the cyber-resiliency goals of the system.  
+%
+For example, the \texttt{add\_filter} strategy is automatically inserted into the assurance case when the \textit{Filter} transformation is performed, and includes logical rules that Resolute uses to determine whether the well-formedness claim is  supported by evidence.
+The \texttt{add\_filter} definition (shown in Figure~\ref{fig:resolute-add-filter}) includes the following sub-goals: 
+\begin{itemize}
+	\item \texttt{filter\_exists} - the filter component exists in the model
+	\item \texttt{filter\_not\_bypassed} -  there is no alternate pathway in the model that can bypass the filter
+	\item \texttt{filter\_implemented\_correctly} - the filter has been implemented correctly
+\end{itemize}
+
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\columnwidth]{figs/resolute-add-filter.png}
+	\caption{Updated well-formedness claim.} 
+	\label{fig:resolute-add-filter} 
+\end{figure}
+
+The first two sub-goals are supported by evidence obtained by examining the structure of the model, while the last is determined by examining the output of the synthesis tool.  
+If at a later time during development the model is inadvertently altered in a way that renders the transformation ineffective, Resolute will be unable to substantiate the evidential statements, and therefore produce a failing assurance case.
+
+The third subgoal is satisfied by SPLAT.  SPLAT not only generates the implementation code for high-assurance components such as filters, monitors, and gates, but it also produces a proof that this code correctly implements its AGREE specification.  
+Resolute uses the existence of the SPLAT proof as evidence that the component was implemented correctly.
+
+
+% Resolute can determine whether an assurance case passes or fails
+
+
+% Advocate?
+
+% Show generated assurance case (in Advocate?)
