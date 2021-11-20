@@ -31,6 +31,11 @@
   morekeywords={eq, bool, guarantee, assume, true, false, pre, not, and, or, property, const}
 }
 
+% for diagram in synthesis.tex
+
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+
 \newcommand{\briefcase}{BriefCASE}
 \newcommand{\hamr}{HAMR}
 \newcommand{\selFour}{seL4}
@@ -83,11 +88,11 @@
 \markboth{Department Head}{Paper title}
 
 \begin{abstract}
-Formal methods tools that can provide mathematical proof of system properties 
-have improved dramatically in their power and capabilities. Our team has developed a model-based systems 
-engineering environment that integrates formal methods at all levels of system design. 
-Our goal is to help systems engineers to address 
-cybersecurity concerns as they develop complex high-assurance systems. 
+Formal methods tools that can provide mathematical proof of system properties
+have improved dramatically in their power and capabilities. Our team has developed a model-based systems
+engineering environment that integrates formal methods at all levels of system design.
+Our goal is to help systems engineers to address
+cybersecurity concerns as they develop complex high-assurance systems.
 \end{abstract}
 
 \maketitle
@@ -119,9 +124,10 @@ cybersecurity concerns as they develop complex high-assurance systems.
 \input{transforms}
 
 \subsection{High Assurance Component Synthesis}
-Konrad, Eric, Junaid -  Budget: 1 column
-\cite{case-verified-filter} \cite{hardin-co-assurance}
-\cite{formal-filter-synth-langsec} \cite{contiguity-types} 
+%% Konrad, Eric, Junaid -  Budget: 1 column
+%% \cite{case-verified-filter} \cite{hardin-co-assurance}
+%% \cite{formal-filter-synth-langsec} \cite{contiguity-types}
+\input{synthesis}
 
 \subsection{Remote Attestation}
 %Perry -  Budget: 1 column
@@ -161,7 +167,7 @@ Isaac -  Budget: 1 column
 %David -  Budget: 1 column
 \input{caas-section}
 
-Describe how we have used the BriefCASE tools to add new functionality to the CAAS architecture.  
+Describe how we have used the BriefCASE tools to add new functionality to the CAAS architecture.
 
 \section{CONCLUSION}
  Budget: 0.5 column
@@ -180,4 +186,3 @@ policies of the Department of Defense or the U.S. Government.
 \input{bios}
 
 \end{document}
-
