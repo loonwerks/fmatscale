@@ -1,7 +1,7 @@
 %Introduction
 \chapterinitial{Aerospace systems engineers} are currently given few
 development tools to understand and mitigate 
-potential cybersecurity vulnerabilities and how to  mitigate them.  Typically, they must rely on
+potential cybersecurity vulnerabilities.  Typically, they must rely on
 process-oriented checklists and guidelines. Cyber vulnerabilities
 are often discovered during penetration testing late in the
 development process. Worse yet, they may be discovered
@@ -15,7 +15,7 @@ on real high-assuance systems at industrial scale.
 Our application domain is avionics and aerospace systems in general.  
 They are typically large, real-time cyberphysicial systems with the added 
 complexities of performing safety-critical tasks and being exposed to 
-a wide variety of cybersecurity threats.  Furthermore, they are subject 
+a wide variety of cyber threats.  Furthermore, they are subject 
 to intense regulatory scrutiny due to the certification requirements of this domain. 
 
 In previous work on the High-Assurance Cyber Military Systems (HACMS) project \cite{HACMS}
@@ -25,16 +25,16 @@ work is focused on automating the capabilities that we prototyped in the HACMS p
 and extending the reach and scale of the formal methods design and verification approach.  
 
 To this end, we have developed a model-based systems engineering (MBSE) 
-envirnoment that allows engineers to address a range of properties and 
+environment that allows engineers to address a range of properties and 
 manage system complexity through compositional analysis, integrating formal methods
-at all levels of the design process.  The \briefcase tools are based on the 
+at all levels of the design process.  The tools are based on the 
 Architecture Analysis and Design Language (AADL) and extend the Open Source
-AADL Tool Environment (OSATE).  They are specifically designed 
+AADL Tool Environment (OSATE) \cite{aadl}.  They are specifically designed 
 to bridge the gap between a user-level modeling language accessible to systems 
-engineers and cutting edge capabilities of the formally verified \selFour microkernel
-and high-assurance components synthesized from forml specification.  
+engineers and cutting edge capabilities of the formally verified seL4 microkernel \cite{seL4}
+and high-assurance components synthesized from formal specifications.  
 
-By using these tools to build real avionics systems, we hope to show 
+By using these tools to build real avionics systems, we show 
 that current formal methods tools are practical, effective, and scalable to significant 
 high-assurance applications in the aerospace industry.  
 

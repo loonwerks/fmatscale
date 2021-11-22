@@ -1,42 +1,65 @@
 %Innovations
-FOCUS MORE ON INNOVATIVE CAPABILITIES THAN ON INDIVIDUAL TOOLS
+As part of the Cyber Assured Systems Engineering (CASE) program,
+our team has developed a MBSE tool environment that integrates design, verification,
+and code generation activities, enabling systems engineers to design-in cyber-resiliency
+for complex cyber-physical systems. The {\em BriefCASE} tools capture our 
+vision for how formal methods can be applied throughout the design and build process 
+to create high-assurance cyber-resilient systems.  
+A key aspect of our approach is to leverage an
+architecture model that provides a framework for analyzing
+system behavior and organizing the assurance evidence produced.  
+AADL allows engineers to desribe the important elements of distributed,
+real-time, embedded systems (processors, memory, busses, processes, 
+threads, and data interconnections) with sufficiently rigorous semantics
+that can support formal reasoning.  
 
-MBSE environment for high-assurance systems, providing access to FM tools at every level, integrating assurance evidence for co-evolving design and associated evidence.
+The main innovations of our approach are:
 
 \begin{enumerate}
-\item Semi-automated architectural design patterns to address cyber-resiliency requirements, including synthesis of high-assurance components
-\item MBSE environment that leverages seL4 security guarantees and makes this accessible
-\item Co-evolution of system design and certification evidence/artifacts, organized by assurance argument
-\item Integration of formal methods throughout the workflow (or is this part of one of the other innovations?)
+
+\item We provide automated architectural design patterns to address cyber-resiliency requirements, 
+including synthesis of high-assurance components from formal specifications.
+
+\item Our MBSE environment can target different operating systems including the seL4 microkernel, 
+making its formal security guarantees easibly accessible to developers. 
+
+\item The approach is based upon co-evolution of system design and assurance artifacts, so that
+design changes automatically update the associated certification evidence. An assurance argument
+is embedded in the architecture model itself to capture and document the design decisions 
+along with associated rationale.
+
+\item Formal methods are integrated throughout the workflow, including requirements capture,
+component synthesis, verification, code generation, and the seL4 microkernel itself. 
+
 \end{enumerate}
 
-As part of the DARPA Cyber Assured Systems Engineering (CASE) program,
-our team has developed design, analysis, and verification
-tools that enable systems engineers to design-in cyber-resiliency
-for complex cyber-physical systems. We have produced a prototype
-Model-Based Systems Engineering (MBSE) environment called
-BriefCASE which is based on the Architecture Analysis and Design
-Language (AADL). BriefCASE extends the Open Source AADL
-Tool Environment (OSATE) to add new design, analysis, and code
-generation capabilities targeted at building cyber-resilient systems.
-BriefCASE provides access to two analysis tools (GearCASE
-and DCRYPPS) that can examine AADL models to detect potential
-cyber vulnerabilities and suggest requirements for mitigation.
-A library of architectural transforms guides systems engineers
-through automated model transformations that modify the
-architecture to address these requirements, possibly inserting new
-high-assurance components into the system. Implementations for
-these new high-assurance components are synthesized from formal
-specifications using the Semantic Properties for Language and
-Automata Theory (SPLAT) tool. Formal verification that the
-transformed system model satisfies its cyber requirements is accomplished
-via model checking using the Assume Guarantee Reasoning
-Environment (AGREE). Cyber-resilient code implementing the
-verified model is automatically generated using the High Assurance
-Modeling and Rapid Engineering for Embedded Systems (HAMR)
-toolkit. If desired, this code can be targeted to the formally
-verified seL4 secure microkernel.
-A novel aspect of our approach is the use of an assurance argument
-embedded in the architecture model itself to capture and
-document the design decisions made during this process, along
-with associated rationale.
+
+
+
+%We have produced a prototype
+%Model-Based Systems Engineering (MBSE) environment called
+%BriefCASE which is based on the Architecture Analysis and Design
+%Language (AADL). BriefCASE extends the Open Source AADL
+%Tool Environment (OSATE) to add new design, analysis, and code
+%generation capabilities targeted at building cyber-resilient systems.
+%BriefCASE provides access to two analysis tools (GearCASE
+%and DCRYPPS) that can examine AADL models to detect potential
+%cyber vulnerabilities and suggest requirements for mitigation.
+%A library of architectural transforms guides systems engineers
+%through automated model transformations that modify the
+%architecture to address these requirements, possibly inserting new
+%high-assurance components into the system. Implementations for
+%these new high-assurance components are synthesized from formal
+%specifications using the Semantic Properties for Language and
+%Automata Theory (SPLAT) tool. Formal verification that the
+%transformed system model satisfies its cyber requirements is accomplished
+%via model checking using the Assume Guarantee Reasoning
+%Environment (AGREE). Cyber-resilient code implementing the
+%verified model is automatically generated using the High Assurance
+%Modeling and Rapid Engineering for Embedded Systems (HAMR)
+%toolkit. If desired, this code can be targeted to the formally
+%verified seL4 secure microkernel.
+%A novel aspect of our approach is the use of an assurance argument
+%embedded in the architecture model itself to capture and
+%document the design decisions made during this process, along
+%with associated rationale.
