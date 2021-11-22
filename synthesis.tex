@@ -1,9 +1,10 @@
 The correctness of the leaf-level components introduced by CASE
 transformations resolves to the question of whether such a component
-meets its \agree{} contract. In CASE, this obligation is addressed by
-\emph{formal synthesis}: in particular, given a sufficiently detailed
-formal contract, we generate code from it and generate proofs showing
-that the generated code obeys the contract.
+meets its \agree{} contract. This obligation is addressed by
+\emph{formal synthesis}: given a sufficiently detailed formal
+specification of component behavior, the \splat{} tool generates code
+from it and also generates proofs showing that the generated code is
+correctly compiled and meets its specification.
 
 The formal languages that filters, gates, and monitors are generated
 from include regular expressions, contiguity types
@@ -29,30 +30,29 @@ of Standard ML \cite{SML97} possessing a fully verified compiler
 \draw [->,thick] (D) to (E);
 \end{tikzpicture}
 \end{center}
-\caption{Verified Synthesis Path.\label{fig:synthesis}}
+\caption{\splat{} Verified Synthesis Path.\label{fig:synthesis}}
 \end{figure}
 
 Regular expressions and contiguity types are formalisms well-suited
 for expressing classes of constraints on the data passed in
 messages. Thus they provide a useful basis for expressing
 filters. Regular expressions compile to efficient finite state
-automata, generating a correctness proof along the
-way\cite{case-verified-filter}. Contiguity types can capture more
-complex data formats, including variable-length arrays and union
-structures; this level of expressiveness was needed to handle the
-messages of UxAS. We use a proved correct contiguity-type based parser
-generator to decode and check the wellformedness of serialized data
-\cite{contiguity-types}.
+automata, generating a correctness proof along the way
+\cite{case-verified-filter}. Contiguity types can capture more complex
+data formats, including variable-length arrays and union structures;
+this level of expressiveness was needed to handle the messages of
+UxAS. We deploy a verified contiguity-type based parser generator
+\cite{contiguity-types} to decode and check the wellformedness of
+such serialized data.
 
 Gates and monitors can require arbitrarily complex computations for
-their work hence we also support code generation from Lustre. Lustre
-underlies \agree{} and provides adequate power for specifying general
-computation. We have formalized the semantics of Lustre and are using
-it as the basis for a formal translation to CakeML.
+their work; hence we also support code generation from Lustre. We have
+formalized the semantics of Lustre and are using it as the basis for a
+formal translation to CakeML.
 
-Note that code generated from \splat{} is deployed as a scheduled
-thread in a real-time environment. Thus there are two aspects to the
-correctness of leaf-level component behavior: (1) correctness of a
-`one shot` thread execution, and (2) correctness of the perpetual
-(re-)execution of the thread. How to model the latter and prove
-relevant properties is discussed in \cite{johannes:repeat}.
+Since code generated from \splat{} is deployed as a scheduled thread
+in a real-time environment, there are two aspects to consider: (1)
+correctness of a `one shot` thread execution (discussed above), and
+(2) correctness of the perpetual re-execution of the thread. How to
+model the latter and prove relevant properties is discussed in
+\cite{johannes:repeat}.
