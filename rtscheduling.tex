@@ -1,34 +1,36 @@
 % Real-Time Scheduling
 
-\emph{Temporal isolation} is a technique to reduce timing channels and temporal 
-interference between software threads executing on the same platform. 
-In certain conditions,
-timing channels can be used to violate confidentiality requirements. 
-Temporal interference can reduce availability of time-critical functionality, 
-and impact integrity of controls by inducing selective jitter. 
-For example, if one component is compromised, it could dominate the processor, 
+In mixed-criticality mission systems,
+execution threads often 
+have strict confidentiality, integrity, and availability requirements. 
+Under certain conditions,
+timing channels can be manipulated to violate these security requirements. 
+For example, temporal interference between timing channels
+can reduce availability of time-critical functionality 
+and weaken the integrity of controls by inducing selective jitter.
+A compromised component could dominate the processor, 
 preventing other components from completing their tasks, placing the security 
 of the entire platform in jeopardy. 
-In mixed-criticality mission systems, 
-multiple threads necessary for mission success often 
-have strict confidentiality, integrity, and availability requirements. 
 Simple scheduling approaches that attempt to use priority schemes to mitigate 
-this impact only protect the highest priority threads.
+this impact only protect the highest priority threads and leave the other
+threads vulnerable.
 
-\briefcase\ achieves temporal isolation in a real-time
-environment in which threads execute within
-their own scheduled timing constraints without interference from other
-threads hosted on the same platform. To accomplish this, we leveraged
+\emph{Temporal isolation} is a more secure technique to restrict timing channels and
+reduce temporal interference between software threads executing on the same platform. 
+\briefcase\ achieves temporal isolation by leveraging
 prior work from safety and security-critical disciplines, such as
 avionics, where temporal isolation in real-time scheduling has been
-deployed for decades. We implemented a static cyclic scheduling
+deployed for decades.
+We implemented a static cyclic scheduling
 approach using the \selFour\ domain scheduler, where a fixed schedule
 defines an ordered sequence of static execution slots. Each slot has a
 duration and a partition identifier.  \selFour\ ensures that the
 temporal domain, and any threads running in it, will not exceed their defined
-time allotments. Creation of a valid static cyclic schedule that
-satisfies all the application's timing requirements is the
-responsibility of the system designers.
+time allotments. Thus, each thread executes within their own
+well-defined timing constraints without interference from other threads.
+System designers are responsible for the
+creation of a valid static cyclic schedule that
+satisfies all the application's timing requirements.
 
 \briefcase\ generates a start-of-frame synchronization signal for each thread using
 a special thread called the Pacer, which sends periodic signals
