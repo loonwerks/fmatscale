@@ -10,8 +10,10 @@ from include regular expressions, contiguity types
 \cite{contiguity-types}, and Lustre \cite{lustre}. For each of these
 languages, we have infrastructure (see Figure \ref{fig:synthesis})
 that (a) translates formal specifications to code and (b) proves the
-correctness of the translation. The generated code is CakeML
-\cite{cakeml}, a verified compiler for a Standard ML variant.
+correctness of the translation using the HOL4 system
+\cite{hol4:overview}. The generated code is \emph{CakeML}, a dialect
+of Standard ML \cite{SML97} possessing a fully verified compiler
+\cite{cakeml}.
 
 \begin{figure}[h]
 \begin{center}
@@ -50,7 +52,7 @@ it as the basis for a formal translation to CakeML.
 
 Note that code generated from \splat{} is deployed as a scheduled
 thread in a real-time environment. Thus there are two aspects to the
-correctness of thread behavior: (1) correctness of a `one shot` thread
-execution, and (2) correctness of the perpetual (re-)execution of the
-thread. How to model the latter and prove relevant properties is
-discussed in \cite{johannes:repeat}.
+correctness of leaf-level component behavior: (1) correctness of a
+`one shot` thread execution, and (2) correctness of the perpetual
+(re-)execution of the thread. How to model the latter and prove
+relevant properties is discussed in \cite{johannes:repeat}.
