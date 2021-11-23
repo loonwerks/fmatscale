@@ -1,19 +1,28 @@
 %Innovations
-As part of the Cyber Assured Systems Engineering (CASE) program,
+As part of the Cyber Assured Systems Engineering (CASE) project,
 our team has developed a MBSE tool environment that integrates design, verification,
 and code generation activities, enabling systems engineers to design-in cyber-resiliency
 for complex cyber-physical systems. The {\em BriefCASE} tools capture our 
 vision for how formal methods can be applied throughout the design and build process 
 to create high-assurance cyber-resilient systems.  
-A key aspect of our approach is to leverage an
-architecture model that provides a framework for analyzing
+
+A fundamental aspect of our approach is the use of 
+architecture models that provides a framework for analyzing
 system behavior and organizing the assurance evidence produced.  
 AADL allows engineers to desribe the important elements of distributed,
 real-time, embedded systems (processors, memory, busses, processes, 
 threads, and data interconnections) with sufficiently rigorous semantics
 that can support formal reasoning.  
 
-The main innovations of our approach are:
+Proofs about models are meaningless unless there is some way to ensure
+that the implementation retains the properties of the model.  The seL4 
+microkernel \cite{seL4} that have used in both HACMS and CASE is formally verified,
+from its high-level security properties down to its binary implementation.  
+By targeting seL4 we ensure that system components cannot interact in unintended 
+ways and the data flows in the architecture model are enforced in the
+final product.  
+
+The main innovations of the BriefCASE tools and methodology are:
 
 \begin{enumerate}
 
@@ -21,7 +30,8 @@ The main innovations of our approach are:
 including synthesis of high-assurance components from formal specifications.
 
 \item Our MBSE environment can target different operating systems including the seL4 microkernel, 
-making its formal security guarantees easibly accessible to developers. 
+making its formal security guarantees easibly accessible to developers. This ensures that 
+the implementation produced is faithful to the modeled system. 
 
 \item The approach is based upon co-evolution of system design and assurance artifacts, so that
 design changes automatically update the associated certification evidence. An assurance argument
