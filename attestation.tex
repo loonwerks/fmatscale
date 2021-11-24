@@ -1,30 +1,29 @@
 Semantic remote attestation is a technique for remotely establishing
 trust in running software.  An appraiser requests an attestation from
-a target, receives evidence in response it the request, and appraises
+a target, receives evidence in response to the request, and appraises
 the evidence to determine
 trust~\cite{Haldar:04:Semantic-Remote,Coker::Principles-of-R}. Because
 remote attestation does not require modification of its measurement
-target, StairCASE utilizes it to establish trust in legacy software
+target, we utilize it to establish trust in legacy software
 that cannot otherwise be verified.  We construct a verified remote
 attestation infrastructure around the legacy target that generates
 run-time and boot-time evidence.
 
-The approach adds three attestation managers to the seL4-based
+Our approach adds three attestation managers to the seL4-based
 architecture used to harden the attestation target.  Each attestation
 manager executes protocols specified by Copland~\cite{Ramsdell:2019aa}
 phrases.  Copland is a formally specified language designed for
 writing attestation protocols that are both verifiable and executable.
 The attestation managers themselves are written and verified using
-CakeML~\cite{cakeml} and
-Coq~\cite{Bertot:2013aa}.
+CakeML~\cite{cakeml} and Coq~\cite{Bertot:2013aa}.
 
-The UserAM runs as a Linux process on the seL4 virtual machine.  It's
-responsibilities are responding to attestation requests from off
+The UserAM runs as a Linux process on the seL4 virtual machine.  Its
+responsibilities include responding to attestation requests from off
 platform, measuring the hardened application, and requesting
 attestations from the platform.  When the UserAM receives an
 attestation request it responds by executing an attestation protocol
 that measures the hardened application, requests measurements from the
-PlatformAM, and signs the result and a nonce from the request.  The
+PlatformAM, signs the result and generates a nonce from the request.  The
 resulting evidence package is returned to the requesting appraiser.
 
 Because the UserAM runs as a process in the Linux kernel, it cannot be
@@ -45,8 +44,8 @@ way the platform appraises a remote target before trusting it to
 behave as expected.
 
 Using the remote attestation system to harden a platform involves
-writing application specific attestation and appraisal components.
+writing application-specific attestation and appraisal components.
 New measurers are constructed for the UserAM that measure the running
 application along with corresponding appraisal code.  The PlatformAM
-and attestation architecture remain the same across applications.  The
-overhead required for hardening is thus minimized.
+and attestation architecture remain the same across applications.
+Thus, the overhead required for hardening is minimized.
