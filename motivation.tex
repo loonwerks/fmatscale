@@ -15,8 +15,11 @@ station (\emph{Radio}), mission planning automation (\emph{UxAS}), waypoint mete
 (\emph{WaypointManager}), and a UART to talk to the flight controller (\emph{UART}).
 
 \briefcase\ integrates four key formal methods in the model-based engineering workflow:
-assume-guarantee verification (\agree), synthesis of high-assurance components (\splat), synthesis
-of inter-component communication (\hamr), and the \selFour\ verified microkernel.
+verification via the Assume Guarantee REasoning Environment (\agree);
+synthesis of high-assurance components by means of the Semantic
+Properties of Language and Automata Theory tool (\splat); synthesis
+of inter-component communication by the High Assurance Modeling and
+Rapid engineering for embedded systems tool (\hamr); and the \selFour\ verified microkernel.
 Each component in the unhardened system, and the interface for the top-level software component, is
 formally specified with an AGREE contract stating assumptions on inputs and guarantees on outputs
 under the assumptions.
