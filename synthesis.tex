@@ -38,7 +38,10 @@ for expressing classes of constraints on the data passed in
 messages. Thus they provide a useful basis for expressing
 filters. Regular expressions compile to efficient finite state
 automata, generating a correctness proof along the way
-\cite{case-verified-filter}. Contiguity types can capture more complex
+\cite{case-verified-filter}.  We have also synthesized regular
+expressions to hardware using this proof-producing
+technique \cite{formal-filter-synth-langsec}.
+Contiguity types can capture more complex
 data formats, including variable-length arrays and union structures;
 this level of expressiveness was needed to handle the messages of
 UxAS. We deploy a verified contiguity-type based parser generator
