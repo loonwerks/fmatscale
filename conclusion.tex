@@ -1,0 +1,31 @@
+We have produced a Model-Based Systems Engineering (MBSE) environment
+called BriefCASE, based on the Architecture Analysis and Design
+Language (AADL). BriefCASE extends the Open Source AADL
+Tool Environment (OSATE) to add new design, analysis, and code
+generation capabilities based on formal methods and targeted at
+high-assurance cyber-resilient system design. BriefCASE provides
+access to two cyber requirements analysis tools (GearCASE
+and DCRYPPS) that can examine AADL models to detect potential
+cyber vulnerabilities and suggest requirements for mitigation.
+A library of architectural transforms guides systems engineers
+through automated model transformations that modify the
+architecture to address these requirements, oftentimes inserting new
+high-assurance components synthesized from formal
+specifications using the SPLAT tool. Formal verification that the
+transformed system model satisfies its cyber requirements is accomplished
+via model checking using the Assume Guarantee Reasoning
+Environment (AGREE). Cyber-resilient code implementing the
+verified model is automatically generated using the HAMR
+tool. If desired, this code can be targeted to the formally
+verified seL4 secure microkernel.  Another novel aspect of our approach is
+the use of an assurance argument embedded in the architecture model
+itself to capture and document the design decisions made during this
+process, along with associated rationale.
+
+We have successfully demonstrated our BriefCASE methodology and tools on the
+CH-47F helicopter Common Avionics Architecture System (CAAS), utilizing a team of CAAS
+development engineers who had no previous experience with formal methods.  We
+are currently incorporating lessons learned from this experience to improve the BriefCASE
+methodology and tools, focusing on scalability and usability.
+
+
