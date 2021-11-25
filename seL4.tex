@@ -2,7 +2,7 @@
 % word budget: ~ 400 words
 
 The seL4 microkernel~\cite{sel4-sosp09} is a lightweight, fast, and secure
-operating system (OS) kernel. Its implementation is fully formally verified;
+operating system (OS) kernel. Its implementation is fully formally verified,
 from high-level security properties down to the binary level. It was the first
 OS kernel with this degree of formal verification, and after more than a decade
 of further research and engineering is still not only the leading formally
@@ -10,10 +10,10 @@ verified OS kernel, but also the fastest OS kernel on the Arm architecture.
 
 Its formal verification makes seL4 the ideal basis for high-assurance systems.
 It is in itself a demonstration of the level of fidelity and scale formal
-verification can achieve~\cite{sel4-tocs14}. It supports multiple architectures
-(Arm, x86-64, RISC-V), deep security properties such as integrity,
+verification can achieve~\cite{sel4-tocs14}. seL4 supports multiple architectures
+(Arm, x86-64, RISC-V), provides deep security properties such as integrity,
 confidentiality and availability, and comes with formally verified user-level
-system initialization. As one of its multiple available OS personalities, it
+system initialization. As one of its multiple available OS personalities, seL4 
 also offers the user-level CAmkES component system that provably achieves isolation
 between statically specified components.
 
