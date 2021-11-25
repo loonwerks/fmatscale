@@ -25,7 +25,7 @@ The \texttt{add\_filter} definition (shown in Figure~\ref{fig:resolute-add-filte
 The first two sub-goals are supported by evidence obtained by examining the structure of the model, while the last is determined by examining the output of the synthesis tool.  
 If at a later time during development the model is inadvertently altered in a way that renders the transformation ineffective, Resolute will be unable to substantiate the evidential statements, and therefore produce a failing assurance case.
 
-The third subgoal is satisfied by SPLAT.  SPLAT not only generates the implementation code for high-assurance components such as filters, monitors, and gates, but it also produces a proof that this code correctly implements its AGREE specification.  
+The third subgoal is satisfied by SPLAT.  SPLAT not only generates the implementation code for high-assurance components such as filters, monitors, and gates, but it also produces a proof that the generated code correctly implements its AGREE specification.  
 Resolute uses the existence of the SPLAT proof as evidence that the component was implemented correctly.
 
 
