@@ -1,4 +1,4 @@
-To address the new requirement, the architecture will need to be transformed in such a way as to harden the design against the vulnerability.
+To address the new cyber-resiliency requirement, the architecture will need to be transformed in such a way as to harden the design against the vulnerability.
 BriefCASE provides a library of model transformations for addressing common cyber vulnerabilities.  Currently, the following transformations are supported:
 
 % add a brief description for these?
@@ -12,8 +12,8 @@ BriefCASE provides a library of model transformations for addressing common cybe
 	\item seL4
 \end{itemize}  
 
-The transformations are automated by the tool, resulting in a hardened model that is correct-by-construction.  
-For example, ensuring a component only receives well-formed messages can be accomplished by the insertion of a high-assurance filter.  The BriefCASE Filter transform wizard (Figure~\ref{fig:filter-wiz}) enables the configuration of filter component properties, including the filter behavioral specification, which is represented in the AGREE language.
+The transformations are automated by the BriefCASE tool, resulting in a hardened model that is correct-by-construction.  
+For example, ensuring that a component only receives well-formed messages can be accomplished by the insertion of a high-assurance filter.  The BriefCASE Filter transform wizard (Figure~\ref{fig:filter-wiz}) enables the configuration of filter component properties, including the filter behavioral specification, which is represented in the AGREE language.
 
 \begin{figure}[h]
 	\centering
@@ -22,9 +22,9 @@ For example, ensuring a component only receives well-formed messages can be acco
 	\label{fig:filter-wiz} 
 \end{figure}
 
-BriefCASE inserts a new filter component into the model, sets the component properties, and establishes the appropriate connections to source and destination components. The filter specification is inserted into an AGREE annex, enabling both formal analysis of the model as well as providing the behavioral specification for a provably correct synthesis of the component implementation via the SPLAT plugin.
+BriefCASE inserts a new filter component into the model, sets the component properties, and establishes the appropriate connections to source and destination components. The filter specification is inserted into an AGREE annex, enabling formal analysis of the model as well as providing the behavioral specification for a provably correct synthesis of the component implementation via the SPLAT plugin.
 
-The transformation also updates the Resolute goal with new evidential statements pointing to evidence that the model has indeed been hardened against the vulnerability and the requirement has been satisfied. 
+The transformation also updates the Resolute goal with new evidential statements indicating that the model has indeed been hardened against the vulnerability and the requirement has been satisfied.
 %(as shown in Figure~\ref{fig:resolute-add-filter}).
 %For example, the \texttt{add\_filter} strategy is included in a library of built-in Resolute transform rules and provides Resolute with the logical instructions for evaluating if the top-level goal has been satisfied.
 %The \texttt{add\_filter} definition (shown in Figure~\ref{fig:resolute-add-filter}) includes the following sub-goals: 
