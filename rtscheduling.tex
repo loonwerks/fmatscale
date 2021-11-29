@@ -8,7 +8,7 @@ timing channels can be manipulated to violate these security requirements.
 For example, temporal interference between timing channels
 can reduce availability of time-critical functionality 
 and weaken the integrity of controls by inducing selective jitter.
-A compromised component could dominate the processor, 
+As a result, a compromised component could dominate the processor, 
 preventing other components from completing their tasks, placing the security 
 of the entire platform in jeopardy. 
 Simple scheduling approaches that attempt to use priority schemes to mitigate 
@@ -35,7 +35,7 @@ satisfies all the application's timing requirements.
 \briefcase\ generates a start-of-frame synchronization signal for each thread using
 a special thread called the Pacer, which sends periodic signals
 to each thread. Each application thread blocks until it receives its
-signal from the Pacer. The thread runs to completion, and then
+signal from the Pacer. The application thread runs to completion, and then
 blocks again on the Pacer signal for the next iteration. 
 Each thread subsequently executes
 exactly once during its statically scheduled time slice.
