@@ -2,12 +2,13 @@
 As systems become more complex, composition of components and 
 systems presents safety and security challenges that span
 many sub-systems.  Subsystems and components may originate from
-different organizations -- many of which may not have a complete
+different organizations, many of which may not have a complete
 understanding of system information flows and potential impacts of
 security attacks.  Thus, it is essential to have trustworthy methods
 of developing common understanding of dependencies in the system and
-the respective responsibilities of the involved vendors.  On CASE, the
-Awas~\cite{awas} AADL information flow analyzer and visualizer has been 
+the respective responsibilities of the involved vendors.  
+
+The Awas~\cite{awas} AADL information flow analyzer and visualizer has been 
 applied to enable allow developers and auditors to understand, reason,
 explore, and visualize system dependencies and information flow at
 scale across components and sub-systems.  Awas processes the AADL
@@ -20,12 +21,12 @@ specified using by the AADL Error Modeling Annex (EMv2).
 Awas also provides a user-friendly Domain Specific Language (DSL) to 
 query, check, and visualize custom safety/security system properties.
 
-\begin{figure}[h]
+\begin{figure*}[h]
 	\centering
-	\includegraphics[width=\columnwidth]{figs/CASE-Awas.png}
-	\caption{CASE Awas Information Flow Analysis.} 
+	\includegraphics[width=0.8\textwidth]{figs/CASE-Awas.png}
+	\caption{Awas Information Flow Analysis.  EVEN AT THIS SIZE I THINK THIS IS WAY TO SMALL} 
 	\label{fig:CASE-Awas} 
-\end{figure}
+\end{figure*}
 
 Figure~\ref{fig:CASE-Awas} illustrates an example of Awas information flow reachability analysis.
 From a given component or port (e.g., an output port of the Ground Station),
