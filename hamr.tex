@@ -1,19 +1,21 @@
 %% Text for the Infrastructure Code Generation subsection
 % - assigned to John Hatcliff
 
-HAMR \cite{hamr} is a multi-platform, multi-language
-AADL code generation framework.  On CASE, HAMR is primarily used
+The High Assurance Modeling and
+Rapid engineering for embedded systems tool (\hamr)
+\cite{hamr} is a multi-platform, multi-language
+AADL code generation framework.  In the CASE project, HAMR is primarily used
 to generate code for deployment for the seL4 microkernel, but system and component
 prototyping is also supported utilizing HAMR's code generation capability
-for the Java Virtual Machine (JVM) and Linux.  For seL4 deployments, one of the
-primary CASE-inspired objectives is to generate system builds that
+for the Java Virtual Machine (JVM) and Linux.  One of the
+primary objectives is to support system builds that
 leverage seL4 micro-kernel partitioning and information flow
-controls to achieve the AADL-specified component separation and
-inter-component communication needed to support cyber-resiliency.
+guarantees to achieve the AADL-specified component separation and
+inter-component communication needed for cyber-resiliency.
 
 For each AADL thread component, HAMR generates a thread code
-skeleton and APIs for communicating over the ports declared on
-the component.  For components that are implemented directly, the
+skeleton and application programming interfactes (APIs) for communicating over the ports declared on
+the component.  For components that are implemented manually, the
 developer fills out the thread skeleton with application code,
 calling the port APIs, libraries, and component-specific
 developer-implemented support code as needed.
@@ -45,46 +47,51 @@ can be viewed as a high-level reference implementation of AADL
 semantics.   Automatic translation of this reference
 implementation to C on different platforms helps establish
 semantic consistency across different platforms. 
-CASE formal methods such as the AGREE contract language and SPLAT
-code generation framework are designed to align with the AADL
-semantics reflected in the reference implementation.  
+The AGREE contract language and SPLAT
+code generation framework have been designed to align with the AADL
+semantics reflected in this reference implementation.  
 
 To generate deployments on seL4, HAMR makes heavy use of the
-CAmkES code-generation framework.   The CAmkES input
-language is a domain-specific language that supports specification
+component architecture for microkernel-based embedded systems
+(CAmkES) code-generation framework.   The CAmkES input
+language supports specification
 of seL4 partitioning and communication topology using
 component-oriented idioms.  The CAmKES translator generates an
 seL4 \emph{Capability Description Language (CapDL)} file that
 configures the seL4 kernel to support protected memory blocks
 and permission-based reading and writing of each block as
 indicated by CAmkES components and connections.
-To realize the spatial separation specified by the AADL
+To realize the memory separation specified by the AADL
 architecture description, HAMR generates CAmkES specifications
 that: (a) reflect the AADL model's component and communication
 topology, and (b) include additional components and communication
 to support the AADL run-time infrastructure, in particular,
 thread scheduling.
+To enforce time partitioning, HAMR uses the seL4 domain
+scheduler to suport static cyclic scheduling. 
+
 HAMR also provides automated support for configuring Linux-based
 virtual machines as components within the seL4 deployed system. 
-In CASE, this feature has been used to sandbox untrusted legacy code.
-To enforce time partitioning, HAMR uses the seL4 \emph{domain
-scheduler} to suport static scheduling.  In CASE workflows,
-the FASTAR AADL scheduling tool from Adventium Labs was used
-to generate a candidate static schedule, and then the schedule
-was adjusted as needed based on timing experiments (this was
-needed primarily for VM components).
+In the example UAV system, this feature has been used to sandbox untrusted legacy code
+for the Mission Planner component.
 
-HAMR-generated seL4 deployments can be executed on the Qemu ARM
-hardware simulator before deployment to a development board or
+%In CASE workflows,
+%the FASTAR AADL scheduling tool from Adventium Labs was used
+%to generate a candidate static schedule, and then the schedule
+%was adjusted as needed based on timing experiments (this was
+%needed primarily for VM components).
+
+HAMR-generated seL4 systems can be executed on the QEMU emulator
+before deployment to a development board or
 production hardware.  This significantly sped up development
 iterations and enabled the development of a sophisticated
 automated regression testing framework.
 
-While CASE scope did not include full formal verification of
+While we have not yet completed full formal verification of
 the HAMR Slang-based reference implementation and code generation
-pipeline, the Collins CASE team selected the key property of
-information flow preservation to illustrate how one might build
-out to formal verification of important semantic properties.
+pipeline, information flow preservation is a key property that 
+illustrates how one might approach formal verification of 
+other important semantic properties.
 Specifically, HAMR generates flow graphs reflecting the
 inter-component information flow at both the AADL architecture
 level and the seL4 CAmkES level.  In addition to multiple
@@ -94,19 +101,24 @@ traceability relationships between them.  Formalized
 theorems for information flow preservation can then be represented as
 SMT assertions.  This enables SMT solvers to automatically prove
 the following properties for any HAMR-generated seL4 deployment:
-(a) [All AADL flows realized] For every inter-component information
+
+\begin{enumerate}
+\item All AADL flows are implemented -- For every inter-component information
 flow present in the AADL model, that flow is provisioned in the
-generated seL4 kernel configuration;  (b) [No extraneous flows] For
-each inter-component flows provised in the seL4 kernel, that
+generated seL4 kernel configuration.
+\item No extraneous flows are implemented -- For
+each inter-component flows provisioned in the seL4 kernel, that
 flow is represented as an inter-component connection in the
-AADL model.   This property was chosen to emphasize the
-cyber-resiliency dimension of the CASE program, but other
+AADL model.   
+\end{enumerate}
+These properties were chosen to focus on
+cyber-resiliency needs, but other
 key semantic properties of the AADL run-time can be incrementally
 formally verified, e.g., by applying the Slang Logika formal
 verification capability to the Slang reference implementation of the
 AADL run-time.  
 
-Overall, HAMR plays a key role in integrating formal methods
+HAMR plays a key role in integrating formal methods
 at different levels of abstraction at multiple points throughout
 the development process, enabling those methods to be applied
 at-scale in a DoD system development process.   Using the
@@ -119,16 +131,16 @@ generation process that enables: (a) formally verified components
 deployed; and (b) formal specification and verification frameworks
 like AGREE to be used to reason about both component and system
 level properties.   The HAMR code generation architecture is
-designed to support strong traceability and verification, and
-the CASE program has illustrated how key properties such as
-information flow correspondence properties can be established
-via formal verification.   The compositional and staged nature
-of HAMR-based development enables scaling of formal approaches
-by enabling them to be included in a targetted fashion --
-component-wise and at different levels of abstraction -- while
+designed to support strong traceability and verification, as
+illustrated by the information flow correspondence properties.  
+The compositional and staged nature
+of HAMR-based development supports scaling of formal approaches
+by enabling them to be included in component-wise and at
+different levels of abstraction, while
 also integrating parts of the implementation that are assured
 using traditional methods.   In addition, the strong partitioning
 of seL4 enables the controlled integration of untrusted components.
 
+SOME OF THIS LAST PARAGRAPH MIGHT BE BETTER IN THE CONCLUSION.
 
 
