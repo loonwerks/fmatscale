@@ -26,7 +26,7 @@ approach using the \selFour\ domain scheduler, where a fixed schedule
 defines an ordered sequence of static execution slots. Each slot has a
 duration and a partition identifier.  \selFour\ ensures that the
 temporal domain, and any threads running in it, will not exceed their defined
-time allotments. Thus, each thread executes within their own
+time allotments. Thus, each thread executes within its own
 well-defined timing constraints without interference from other threads.
 System designers are responsible for the
 creation of a valid static cyclic schedule that
@@ -35,7 +35,7 @@ satisfies all the application's timing requirements.
 \briefcase\ generates a start-of-frame synchronization signal for each thread using
 a special thread called the Pacer, which sends periodic signals
 to each thread. Each application thread blocks until it receives its
-signal from the Pacer. The thread runs to complete, and then
+signal from the Pacer. The thread runs to completion, and then
 blocks again on the Pacer signal for the next iteration. 
 Each thread subsequently executes
 exactly once during its statically scheduled time slice.
