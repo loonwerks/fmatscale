@@ -3,7 +3,7 @@ trust in software running on a non-local computer.
 An appraiser requests an attestation from
 a target, receives evidence in response to the request, and appraises
 the evidence to determine
-trust~\cite{Haldar:04:Semantic-Remote,Coker::Principles-of-R}. Because
+trust~\cite{Coker::Principles-of-R}. Because
 remote attestation does not require modification of its measurement
 target, we utilize it to establish trust in legacy software
 that cannot otherwise be verified.  We construct a verified remote
@@ -18,7 +18,7 @@ manager executes protocols specified by Copland~\cite{Ramsdell:2019aa}
 phrases.  Copland is a formal specification language designed for
 writing attestation protocols that are both verifiable and executable.
 The attestation managers themselves are written and verified using
-CakeML~\cite{cakeml} and Coq~\cite{Bertot:2013aa}.
+CakeML and Coq.
 
 The \emph{AttestationManager} on the Mission Computer makes
 attestation requests and appraises the results.  A protocol request and nonce are
