@@ -29,21 +29,21 @@ query, check, and visualize custom safety/security system properties.
 \end{figure*}
 
 Figure~\ref{fig:CASE-Awas} illustrates an example of Awas information flow reachability analysis.
-From a given component or port (e.g., an output port of the Ground Station),
-Awas can compute and visualize how the Ground Station’s map information flows through the system
-as well the components/ports that may directly or indirectly consume data derived from that information.
+%From a given component or port (e.g., an output port of the Ground Station),
+In our UAV example, Awas can compute and visualize how the information in Ground Station messages flows through the system
+as well the components or ports that may directly or indirectly consume data derived from that information.
 Awas supports a number of forms of forwards and backward interactive information queries.
 Using the Awas script-based query language, one can specify and check more complex properties, e.g.,
 that information must flow through specific ports or components.
 These end-to-end flow specifications are often useful for supporting verification of the
-effectiveness of cyber-resiliency components.   For example, an Awas specification can state that
+effectiveness of cyber-resiliency components.   An Awas specification can state that
 information from untrusted components such the Ground Station always flow through the
 attestation gate and filter components before reaching the Flight Control or other components
 that make critical decisions about the flight or mission of the UAV.
 
-The HAMR code generation and associated formally verified information
-flow correspondence evidence described subsequently
-%%described in Section~\ref{subsec:hamr}
-guarantees that the seL4 microkernel is configured to permit the exact
-inter-component information flows analyzed and visualized by Awas at
-the model level.
+%The HAMR code generation and associated formally verified information
+%flow correspondence evidence described subsequently
+%%%described in Section~\ref{subsec:hamr}
+%guarantees that the seL4 microkernel is configured to permit the exact
+%inter-component information flows analyzed and visualized by Awas at
+%the model level.
