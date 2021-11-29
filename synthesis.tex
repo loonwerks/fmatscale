@@ -1,7 +1,7 @@
-The correctness of the high-assurance components inserted by \briefcase \
-transformations means that each component 
-meets its \agree{} contract. This obligation is addressed by
-\emph{formal synthesis} using the Semantic Properties of Language 
+The correctness of the high-assurance components inserted
+by \briefcase \ transformations means that each such component
+must meet its \agree{} contract. This obligation is addressed by
+\emph{formal synthesis}, using the Semantic Properties of Language
 and Automata Theory (\splat) tool.  Given a sufficiently detailed formal
 specification of component behavior, \splat{} generates code
 from it and also generates proofs showing that the generated code is
@@ -9,14 +9,16 @@ correctly compiled and meets its specification.
 
 The formal languages that filters, gates, and monitors are generated
 from include regular expressions, contiguity types
-\cite{contiguity-types}, and Lustre \cite{lustre}. For each of these
-languages, we have infrastructure 
+\cite{contiguity-types}, and Lustre.
+%\cite{lustre}.
+For each of these languages, we have infrastructure
 %(see Figure \ref{fig:synthesis})
 that (a) translates formal specifications to code and (b) proves the
-correctness of the translation using the HOL4 theorem proving system
-\cite{hol4:overview}. The generated code is \emph{CakeML}, a dialect
-of Standard ML \cite{SML97} possessing a fully verified compiler
-\cite{cakeml}.
+correctness of the translation using the HOL4 theorem proving system.
+%\cite{hol4:overview}.
+The generated code is \emph{CakeML}, a dialect of Standard ML
+%\cite{SML97}
+possessing a fully verified compiler \cite{cakeml}.
 
 %\begin{figure}[h]
 %\begin{center}
@@ -40,15 +42,17 @@ for expressing classes of constraints on the data passed in
 messages. Thus they provide a useful basis for expressing
 filters. Regular expressions compile to efficient finite state
 automata, generating a correctness proof along the way
-\cite{case-verified-filter}.  We have also synthesized regular
+\cite{case-verified-filter}.  (We have also synthesized regular
 expressions to hardware using this proof-producing
-technique \cite{formal-filter-synth-langsec}.
+technique.)
+% \cite{formal-filter-synth-langsec}.
 Contiguity types can capture more complex
 data formats, including variable-length arrays and union structures
 which are used in the Mission Planner found in our UAV example.
-%this level of expressiveness was needed to handle the messages of UxAS. 
+%this level of expressiveness was needed to handle the messages of UxAS.
 We deploy a verified contiguity-type based parser generator
-\cite{contiguity-types} to decode and check the serialized message data is well-formed
+%\cite{contiguity-types}
+to decode and check that the serialized message data is well-formed
 relative to its specification.
 
 Gates and monitors can require arbitrarily complex computations for
