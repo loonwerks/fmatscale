@@ -5,7 +5,7 @@ and component behavior specified using \agree's assume-guarantee contracts,
 we use \agree's model checker to verify the consistency of these contracts.
 The model checking process verifies that:
 (a) the output guarantees of component implmentations are strong enough to
-validate the input assumptions of downstream components;
+validate the input assumptions of downstream components; and 
 (b) the input assumptions of a component along with the output guarantees of its \emph{sub}-components
 are strong enough to validate its output guarantees.
 For example, in \figref{fig:sw-hardened},
@@ -17,7 +17,7 @@ its input assumptions combined with the output guarantees of its subcomponents.
 This hierachical strategy for reasoning about contracts,
 i.e. \emph{Compositional Analysis},
 reduces the computational complexity of model checking
-by breaking down the larger problem into more manageable fragments (\cite{compositional-analysis-agree}).
+by breaking down the larger problem into more manageable fragments \cite{compositional-analysis-agree}.
 In \figref{fig:sw-hardened}, SW's subcomponents can be broken into further subcomponents,
 and this would, typically, multiply the complexity of the verification process.
 But, in the case of Compositional Analysis (and \agree),
