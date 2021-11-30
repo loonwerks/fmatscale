@@ -34,8 +34,8 @@ vulnerabilities were introduced.  A high-assurance gateway was added between the
 network and the new wireless network, including new components for monitoring messages to and from the wireless 
 devices.  Remote attestation was also added to ensure that any devices that attempt to join the wireless network
 are running trustworthy software.   
-This also required porting the seL4 microkernel to an existing CAAS
-processing module (the vision processing module, or VPM) that would be repurposed to serve as the secure gateway.  
+This also required configuring the seL4 microkernel to run on an existing CAAS
+processing module (the vision processing module, or VPM) that was repurposed to serve as the secure gateway.  
 
 %This vision processing module, or VPM, is provisioned to allow only vetted
 %traffic to/from the aforementioned wireless clients in order to provide situational awareness data
@@ -59,7 +59,8 @@ to generate infrastructure code for the overall system running on seL4.
 %including the seL4 CAmkES components, CAmkES I/O, the processing schedule, etc.
 
 The tablet operating environment was modified to run application software in a Linux virtual machine
-hosted on seL4.  This was necessary to add the remote attestation components.  
+hosted on seL4.  This was done so that the remote attestation component for platform measurement could
+be securely isolated from the (untrusted) application software.  
 
 %utilized either an off-the-shelf Android environment, or a Linux
 %guest OS running on seL4. This provided the CASE remote attestation team with differing challenges
@@ -68,22 +69,21 @@ hosted on seL4.  This was necessary to add the remote attestation components.
 %anti-spoofing monitor developed by the CAAS team detected position/velocity trend inconsistencies,
 %duplicate traffic identifiers, as well as ``teleporting'' aircraft.
 
-The port of the seL4 microkernel to the VPM was complicated by the need for network
-proxy and adapter components to bridge the untrusted wireless network to the rest of the system in a trustworthy
-manner, including the ability to filter encrypted network traffic payloads. Fortunately, dedicated
-processing cores were available on the VPM for the provisioning of these ``low-side'' and ``high-side''
-components. This code had to be manually written due to the complexity of dealing with
+An additional complication was the need to add proxy and network adapter components to 
+allow the encrypted internet messages from devices on the untrusted wireless network to be examined by the 
+secure gateway.  Dedicated processing cores were available on the VPM for the provisioning of these ``low-side'' and ``high-side''
+components separately from the other high-assurance software.  The architecture model was transformed to add these 
+components but their implementation code had to be manually written due to the complexity of dealing with
 off-the-shelf networking technologies.  Automating the synthesis of network adapter and proxy components
 is future work.
 
 As initial users of the BriefCASE tools, the CAAS engineers encountered some limitations in the
 specification expressiveness and documentation, as might be
-expected for the first use of a research tool suite by product area developers. 
+expected for the first use of research tools by product area developers. 
 This led to improvements in the tools to add or extend capabilities.  Initial estimates of
 processing time required for the complex monitoring components turned out to be optimistic,
-requiring an optimization effort. Lack of detailed seL4 support for the target hardware led to more
-extensive porting efforts for the VPM and tablets than was originally anticipated, and tablet
-hardware instabilities further hampered the porting effort. But all in all, the CASE tools were able
-to be productively used by Collins product area engineers to produce the CH-47F CAAS demonstration
+requiring an optimization effort. Lack of detailed documentation and hardware instabilities 
+hampered the tablet software development effort. But overall the BriefCASE tools were able
+to be productively used by Collins product engineers to produce the CH-47F CAAS demonstration
 system on time and within budget, providing our research team with valuable feedback on the
 strengths and weaknesses of the current BriefCASE tool environment.
