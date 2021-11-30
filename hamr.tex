@@ -22,7 +22,7 @@ developer-implemented support code as needed.
 HAMR supports coding component application logic in either C,
 Slang~\cite{slang} (a high-assurance subset of Scala that can be translated to
 C), or CakeML.  Slang-implemented components can interface with
-Scala or Java libraries and executed on the JVM.  Pure Slang
+Scala or Java libraries and execute on the JVM.  Pure Slang
 components can be translated to C and then deployed on HAMR-built
 Linux or seL4 systems.  On CASE, Slang has been used for prototyping
 components, but primary development of directly implemented
@@ -46,7 +46,7 @@ The Slang-based implementation of the AADL run-time framework
 can be viewed as a high-level reference implementation of AADL
 semantics.   Automatic translation of this reference
 implementation to C on different platforms helps establish
-semantic consistency across different platforms. 
+semantic consistency across those platforms. 
 The AGREE contract language and SPLAT
 code generation framework have been designed to align with the AADL
 semantics reflected in this reference implementation.  
@@ -83,8 +83,8 @@ for the Mission Planner component.
 
 HAMR-generated seL4 systems can be executed on the QEMU emulator
 before deployment to a development board or
-production hardware.  This prototyping capability significantly sped up development
-iterations and enabled the development of a sophisticated
+production hardware.  This prototyping capability significantly speeds up development
+iterations and enables the development of a sophisticated
 automated regression testing framework.
 
 While we have not yet completed full formal verification of
@@ -135,7 +135,7 @@ designed to support strong traceability and verification, as
 illustrated by the information flow correspondence properties.  
 The compositional and staged nature
 of HAMR-based development supports scaling of formal approaches
-by enabling them to be included component-wise and at
+by enabling them to be included in a component-wise manner and at
 different levels of abstraction, while
 also integrating parts of the implementation that are assured
 using traditional methods.   In addition, the strong partitioning
