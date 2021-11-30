@@ -3,7 +3,7 @@ DCRYPPS~\cite{dcrypps2019}) that can examine AADL models to detect potential cyb
 and suggest requirements for mitigation.
 %
 Systems engineers are then presented with a requirements management interface
-(Figure~\ref{fig:req-mgmt}) for viewing the generated requirements and importing them into the model
+(top pane in Figure~\ref{fig:req-mgmt}) for viewing the generated requirements and importing them into the model
 so they can be addressed. The interface enables engineers to select the requirements they wish to
 import and assign them unique identifiers, or omit them with rationale. A document listing the omitted
 requirements and rationale is maintained and may be a required development artifact for some
@@ -21,9 +21,7 @@ added to the AADL model, enabling formal verification.
 Such a requirement will be imported into the model with with an associated formal
 contract.
 
-A BriefCASE project contains a repository for requirements. Imported requirements are represented 
-as assurance case goals to be satisfied. For example, one of the requirements for well-formedness 
-messages selected in \figref{fig:req-mgmt} is imported as the following goal:
+A BriefCASE project contains a repository for requirements. Imported requirements are represented in the Resolute language as assurance case goals to be satisfied. For example, one of the requirements for well-formed messages (selected in \figref{fig:req-mgmt}) is imported as the following goal:
 
 \noindent
 \includegraphics[width=1\columnwidth]{figs/req-wellformed-or.png}

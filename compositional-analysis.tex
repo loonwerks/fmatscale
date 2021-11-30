@@ -10,24 +10,24 @@ of the component.
 AGREE uses k-induction as the underlying algorithm for model checking.  AADL models and AGREE
 contracts are first translated into the Lustre language, including verification conditions for consistency
 and correctness of the contracts.  The model checker then attempts to find any model execution traces
-that would violate these contitions using one of several Satisfiability Modulo Theories (SMT) solvers. 
+that would violate these conditions using one of several Satisfiability Modulo Theories (SMT) solvers. 
 If the model checker covers all reachable states in the model without finding a violation then the properties are proved. 
 
 Once the system architecture has been modeled using AADL
-and component behavior specified using \agree's assume-guarantee contracts,
-we use the \agree model checker to verify the consistency of these contracts.
+and the component behavior is specified using \agree's assume-guarantee contracts,
+we use the \agree{} model checker to verify the consistency of these contracts.
 
 \begin{enumerate}
 \item Component interfaces -- The output guarantees of each component must be strong enough to
 satisfy the input assumptions of downstream components. 
 \item Correctness of implementations -- The input assumptions of a system along with the 
-output guarantees of its \emph{sub}-components it must be strong enough to satisfy its output guarantees.
+output guarantees of its \emph{sub}-components must be strong enough to satisfy its output guarantees.
 \end{enumerate}
 
 For example, in \figref{fig:sw-hardened},
 the input assumptions of the Waypoint Manager must be weaker than
-the output guarantees of the Geofence monitor, 
-and the output guarantees of the Mission Software must be inferrable from
+the output guarantees of the Geofence monitor 
+\textit{and} the output guarantees of the Mission Software must be inferrable from
 its input assumptions combined with the output guarantees of its components.
 
 This hierachical strategy for reasoning about contracts,
@@ -36,8 +36,8 @@ reduces the computational complexity of model checking
 by breaking down the larger problem into more manageable fragments \cite{compositional-analysis-agree}.
 Verification of a system does not directly depend on the implementations of its components (or their sub-components),
 but only on their contracts.  
-In \figref{fig:sw-hardened}, each of the Mission Software components either has additional subcomponents 
-or has a source code implementation of its contract.  
+In \figref{fig:sw-hardened}, each of the Mission Software components either contains subcomponents 
+or has a corresponding source code implementation of its contract.  
 Rather than reasoning monolithically about the interaction of all of these lower-level implementations, 
 the compositional approach allows us to reason about each layer of the model separately.  
 More details on the use of composition to reduce verification complexity can be found in \cite{case-models-2021}.

@@ -5,7 +5,7 @@ BriefCASE provides a library of model transformations for addressing common cybe
 \begin{itemize}
 	\item Filter -- Blocks messages that do not conform to the given specification
 	\item Monitor -- Detects violations of a given run-time condition and generates an alert
-	\item Switch -- Used with a Monitor to block messages when an alert is generated
+	\item Switch -- Used with a Monitor to block messages when an alert is generated (also referred to as a \textit{gate})
 	\item Attestation -- Performs a measurement on non-local software to assess its trustworthiness
 	\item Virtualization -- Isolates software component(s) in a virtual machine
 	\item Proxy -- Inserts a pair of components to allow inspection of http message payloads
@@ -14,7 +14,7 @@ BriefCASE provides a library of model transformations for addressing common cybe
 
 The transformations are automated by the BriefCASE tool, resulting in a hardened model that is correct-by-construction.  
 For example, the requirement that a component only receives well-formed messages can be satisfied by the insertion of a high-assurance filter.  
-The BriefCASE Filter transform interface 
+A BriefCASE transform wizard 
 % (Figure~\ref{fig:filter-wiz}) 
 helps to configure the filter component properties, including the filter behavioral specification, which is represented as an assume-guarantee contract.
 
