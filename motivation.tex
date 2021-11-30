@@ -15,7 +15,7 @@ and ensure its cyber-resiliency.
 
 The system includes a ground station computer and the aircraft, consisting of a mission computer and 
 a flight control computer.  
-The baseline (unhardened) mission computer included the four software components marked with asterisks: 
+The baseline (unhardened) mission computer included the four software components colored white: 
 the radio for communication with the ground station (\emph{Radio}), 
 the mission planning service (\emph{Planner}, provided as legacy software running on Linux), 
 flight plan waypoint segmentation (\emph{WaypointManager}), 
@@ -32,25 +32,25 @@ and a serial interface to communicate with the flight control computer (\emph{UA
 %under the assumptions.
 %\agree\ proves the unhardened implementation obeys the composition of these contracts. 
 %
-Cyber-threat analysis tools are used to analyze to original functional model of the system, 
+Cyber-threat analysis tools are used to analyze the unhardened functional model of the system, 
 identifying the ground station and the mission planning
 service as primary sources of cyber attacks.
-Seven new cyber requirements are added to the unhardened system that require ground station
-trust assessment, message integrity checks, and run-time monitoring of several conditions.
+%Seven new cyber requirements are added to the unhardened system that require ground station trust assessment, message integrity checks, and run-time monitoring of several conditions.
+Seven new cyber requirements are introduced that address ground station trust, message integrity, and run-time behavior vulnerabilities.
 The existing behavioral contracts in the unhardened system are strengthened to reflect these new requirements.
 %\agree\ proves the unhardened system under these contracts fails verification. 
 
 Design engineers use \briefcase\ to transform the baseline system model to that shown in
 \figref{fig:sw-hardened}.  Automated model transformations address the cyber requirements by inserting  
 new high-assurance components (shown in green) and targeting the seL4 kernel to enforce separation between components.
-The \emph{AttestationManager} establishes the identity of trusted ground stations while
+The \emph{AttestationManager} establishes the trustworthiness of ground stations while
 the \emph{AttestationGate} only passes messages from trusted sources.  The three 
-filters  (\emph{OR\_Filter}, \emph{LST\_Filter}, \emph{AReg\_Filter}, and \emph{AResl\_Filter}) 
-only pass well-formed messages received from the Radio. A filter on the output of the Planner ensures 
+filters  (\emph{OR\_Filter}, \emph{LST\_Filter}, and \emph{AReq\_Filter}) 
+only pass well-formed messages received from the Radio. Another filter (\emph{AResp\_Filter}) on the output of the Planner ensures 
 that only well-formed flight plans are sent to the WaypointManager.  
-Two run-time monitors alert the system to suspicious behaviors from the Planner such as flight plans that enter keep-out zones or leave
-keep-in zones (\emph{Geofence\_Monitor}) or unrequested mission plans (\emph{Response\_Monitor}).
-The interface behavior of these high-assurance components, with the exception of attestation, is
+Two run-time monitors alert the system to suspicious behaviors from the Planner such as flight plans that enter \textit{keep-out} zones or leave
+\textit{keep-in} zones (\emph{Geofence\_Monitor}), or unresponsiveness (\emph{Response\_Monitor}).
+The interface behavior of these high-assurance components, with the exception of the AttestationManager, is
 specified with assume-guarantee contracts (e.g., a filter makes no assumptions on input and only
 passes inputs that are syntactically well-formed).
 %\agree\ proves the hardened system ensures the added cyber requirements.
