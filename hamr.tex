@@ -14,7 +14,7 @@ guarantees to achieve the AADL-specified component separation and
 inter-component communication needed for cyber-resiliency.
 
 For each AADL thread component, HAMR generates a thread code
-skeleton and application programming interfactes (APIs) for communicating over the ports declared on
+skeleton and application programming interfaces (APIs) for communicating over the ports declared on
 the component.  For components that are implemented manually, the
 developer fills out the thread skeleton with application code,
 calling the port APIs, libraries, and component-specific
@@ -68,7 +68,7 @@ topology, and (b) include additional components and communication
 to support the AADL run-time infrastructure, in particular,
 thread scheduling.
 To enforce time partitioning, HAMR uses the seL4 domain
-scheduler to suport static cyclic scheduling. 
+scheduler to support static cyclic scheduling. 
 
 HAMR also provides automated support for configuring Linux-based
 virtual machines as components within the seL4 deployed system. 
@@ -121,7 +121,7 @@ AADL run-time.
 HAMR plays a key role in integrating formal methods
 at different levels of abstraction at multiple points throughout
 the development process, enabling those methods to be applied
-at-scale in a DoD system development process.   Using the
+at-scale in a the system development process.   Using the
 formally verified seL4 microkernel as a foundation, HAMR enables
 AADL to be used as a model-based development and systems
 engineering framework for seL4-based applications.
@@ -135,7 +135,7 @@ designed to support strong traceability and verification, as
 illustrated by the information flow correspondence properties.  
 The compositional and staged nature
 of HAMR-based development supports scaling of formal approaches
-by enabling them to be included in component-wise and at
+by enabling them to be included component-wise and at
 different levels of abstraction, while
 also integrating parts of the implementation that are assured
 using traditional methods.   In addition, the strong partitioning

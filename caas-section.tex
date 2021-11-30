@@ -14,7 +14,7 @@ Most of the work for this demonstration was
 performed by a team of CAAS development engineers who had no
 previous experience with formal methods.
 Our primary goal was to enable CAAS product engineers to employ the CASE tools to create an
-operational mission scenario exhibiting cyber threats and mitigations that could be exercied using
+operational mission scenario exhibiting cyber threats and mitigations that could be exercised using
 the facilities of the Collins CH-47F System Integration Laboratory. 
 
 \begin{figure*}
@@ -69,7 +69,7 @@ hosted on seL4.  This was necessary to add the remote attestation components.
 %duplicate traffic identifiers, as well as ``teleporting'' aircraft.
 
 The port of the seL4 microkernel to the VPM was complicated by the need for network
-proxy and adapter components to bridge the untrusted wireless network to the rest of the sytem in a trustworthy
+proxy and adapter components to bridge the untrusted wireless network to the rest of the system in a trustworthy
 manner, including the ability to filter encrypted network traffic payloads. Fortunately, dedicated
 processing cores were available on the VPM for the provisioning of these ``low-side'' and ``high-side''
 components. This code had to be manually written due to the complexity of dealing with
@@ -86,4 +86,4 @@ extensive porting efforts for the VPM and tablets than was originally anticipate
 hardware instabilities further hampered the porting effort. But all in all, the CASE tools were able
 to be productively used by Collins product area engineers to produce the CH-47F CAAS demonstration
 system on time and within budget, providing our research team with valuable feedback on the
-strengths and weaknesses of the current BriefCASE tool envionment.
+strengths and weaknesses of the current BriefCASE tool environment.

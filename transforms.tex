@@ -8,7 +8,7 @@ BriefCASE provides a library of model transformations for addressing common cybe
 	\item Switch -- Used with a Monitor to block messages when an alert is generated (also referred to as a \textit{gate})
 	\item Attestation -- Performs a measurement on non-local software to assess its trustworthiness
 	\item Virtualization -- Isolates software component(s) in a virtual machine
-	\item Proxy -- Inserts a pair of components to allow inspection of http message payloads
+	\item Proxy -- Inserts a pair of components to allow inspection of https message payloads
 	\item seL4 -- Transforms the model to comply with seL4 component properties
 \end{itemize}  
 
@@ -28,7 +28,7 @@ helps to configure the filter component properties, including the filter behavio
 BriefCASE then inserts a new filter component into the model, sets the component properties, and establishes the appropriate connections to source and destination components. The filter behavioral contract is also added to the model, enabling formal analysis of the model as well as providing the behavioral specification for a provably correct synthesis of the filter component implementation.
 
 The transformation also updates the assurance case with new evidential statements indicating that the associated goal has been satisfied, including 
-the strategy used and links to associated evidence.  
+the strategy used and links to context and associated evidence.  
 
 %(as shown in Figure~\ref{fig:resolute-add-filter}).
 %For example, the \texttt{add\_filter} strategy is included in a library of built-in Resolute transform rules and provides Resolute with the logical instructions for evaluating if the top-level goal has been satisfied.
