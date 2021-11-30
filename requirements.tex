@@ -2,7 +2,8 @@ BriefCASE provides access to two analysis tools (GearCASE~\cite{gearcase2020} an
 DCRYPPS~\cite{dcrypps2019}) that can examine AADL models to detect potential cyber vulnerabilities
 and suggest requirements for mitigation.
 %
-Systems engineers are then presented with a requirements management interface
+Systems engineers are %then
+presented with a requirements management interface
 (top pane in Figure~\ref{fig:req-mgmt}) for viewing the generated requirements and importing them into the model
 so they can be addressed. The interface enables engineers to select the requirements they wish to
 import and assign them unique identifiers, or omit them with rationale. A document listing the omitted
@@ -30,8 +31,11 @@ messages (selected in \figref{fig:req-mgmt}) is imported as the following goal:
 
 % shown in \figref{fig:req-wellformed-or}.
 \noindent
-Initially, the goal is marked {\em undeveloped} and does not contain any evidential statements.  
-These will be added as the design is updated to address this requirement.  
+% Initially, the goal is marked {\em undeveloped} and does not contain any evidential statements.  
+% These will be added as the design is updated to address this requirement.  
+The goal is marked {\em undeveloped} initially.
+Evidential statements are added to the goal as
+the design is updated to address this requirement.
 
 %for Resolute to evaluate in order to determine whether the goal has been satisfied. Running Resolute
 %at this time will therefore produce a failed assurance case.
