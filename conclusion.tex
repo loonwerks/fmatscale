@@ -1,36 +1,60 @@
-We have produced a Model-Based Systems Engineering (MBSE) environment
+We have produced a model-based systems engineering environment
 called BriefCASE, based on the Architecture Analysis and Design
-Language (AADL). BriefCASE extends the Open Source AADL
-Tool Environment (OSATE) to add new design, analysis, and code
+Language.  The BriefCASE tools and methodology provide design, analysis, and code
 generation capabilities based on formal methods and targeted at
-high-assurance cyber-resilient system design. BriefCASE provides
-access to two cyber requirements analysis tools (GearCASE
-and DCRYPPS) that can examine AADL models to detect potential
-cyber vulnerabilities and suggest requirements for mitigation.
-A library of architectural transforms guides systems engineers
-through automated model transformations that modify the
-architecture to address these requirements, oftentimes inserting new
-high-assurance components synthesized from formal
-specifications using the SPLAT tool. Formal verification that the
-transformed system model satisfies its cyber requirements is accomplished
-via model checking using the Assume Guarantee Reasoning
-Environment (AGREE). Cyber-resilient code implementing the
-verified model is automatically generated using the HAMR
-tool. If desired, this code can be targeted to the formally
-verified seL4 secure microkernel.  Another novel aspect of our approach is
-the use of an assurance argument embedded in the architecture model
-itself to capture and document the design decisions made during this
-process, along with associated rationale.
+high-assurance cyberphysical systems.  
 
-We have successfully demonstrated our BriefCASE methodology and tools on the
-CH-47F helicopter Common Avionics Architecture System (CAAS), utilizing a team of CAAS
-development engineers who had no previous experience with formal methods.  We
-are currently incorporating lessons learned from this experience to improve the BriefCASE
-methodology and tools, focusing on scalability and usability.
+Key innovations include automated architectural design patterns 
+for cyber-resiliency, co-evolution of system design and assurance 
+artifacts (captured as an assurance case linked to the architecture model), 
+synthesis of code for high-assurance components, and code generation
+targeting the formally verified seL4 microkernel.  
+
+We have demonstrated the effectiveness and scalability of these 
+tools by using them to add new cyber-resilient features to a military 
+helicopter avionics system.  Their successful use by our product engineers 
+provides evidence that formal methods can be incorporated into 
+industrial projects.  
+
+All of the tools are open-source, with links and documentation available
+at \url{http://loonwerks.com/projects/case.html}.  We hope that others 
+will find value is this approach and extend the tools with new cyber transforms, 
+expanded system analysis tools, and code generation for additional operating 
+systems and computing platforms.  
+
+
+
+
+
+
+
+%BriefCASE provides
+%access to two cyber requirements analysis tools (GearCASE
+%and DCRYPPS) that can examine AADL models to detect potential
+%cyber vulnerabilities and suggest requirements for mitigation.
+%A library of architectural transforms guides systems engineers
+%through automated model transformations that modify the
+%architecture to address these requirements, oftentimes inserting new
+%high-assurance components synthesized from formal
+%specifications using the SPLAT tool. Formal verification that the
+%transformed system model satisfies its cyber requirements is accomplished
+%via model checking using the Assume Guarantee Reasoning
+%Environment (AGREE). Cyber-resilient code implementing the
+%verified model is automatically generated using the HAMR
+%tool. If desired, this code can be targeted to the formally
+%verified seL4 secure microkernel.  Another novel aspect of our approach is
+%the use of an assurance argument embedded in the architecture model
+%itself to capture and document the design decisions made during this
+%process, along with associated rationale.
+%
+%We have successfully demonstrated our BriefCASE methodology and tools on the
+%CH-47F helicopter Common Avionics Architecture System (CAAS), utilizing a team of CAAS
+%development engineers who had no previous experience with formal methods.  We
+%are currently incorporating lessons learned from this experience to improve the BriefCASE
+%methodology and tools, focusing on scalability and usability.
 
 
 %open-source, prototype, extensible to other domains
 %link to loonwerks.com
 %significance -- recap innovations, scale, accessibility
 %application to real systems
-\url{http://loonwerks.com/projects/case.html}

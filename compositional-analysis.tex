@@ -1,7 +1,7 @@
 % Compositional Analysis
 
 The Assume Guarantee Reasoning Environment (AGREE) is a compositional, assume-guarantee-style model
-checker for AADL models. AGREE attempts to prove properties about one layer
+checker for AADL models \cite{compositional-analysis-agree}. AGREE attempts to prove properties about one layer
 of the architecture using properties allocated to subcomponents. The composition is performed in
 terms of assumptions and guarantees that are provided for each component. Assumptions describe the
 expectations the component has on the environment, while guarantees describe bounds on the behavior
@@ -33,11 +33,11 @@ its input assumptions combined with the output guarantees of its components.
 This hierarchical strategy for reasoning about contracts,
 or \emph{compositional analysis},
 reduces the computational complexity of model checking
-by breaking down the larger problem into more manageable fragments \cite{compositional-analysis-agree}.
+by breaking down the larger problem into more manageable fragments.
 Verification of a system does not directly depend on the implementations of its components (or their sub-components),
 but only on their contracts.  
 In \figref{fig:sw-hardened}, each of the Mission Software components either contains subcomponents 
 or has a corresponding source code implementation of its contract.  
 Rather than reasoning monolithically about the interaction of all of these lower-level implementations, 
 the compositional approach allows us to reason about each layer of the model separately.  
-More details on the use of composition to reduce verification complexity can be found in \cite{case-models-2021}.
+%More details on the use of composition to reduce verification complexity can be found in \cite{case-models-2021}.
