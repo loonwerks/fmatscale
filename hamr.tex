@@ -21,12 +21,15 @@ calling the port APIs, libraries, and component-specific
 developer-implemented support code as needed.
 HAMR supports coding component application logic in either C,
 Slang~\cite{slang} (a high-assurance subset of Scala that can be translated to
-C), or CakeML.  Slang-implemented components can interface with
+C), or CakeML. 
+\remove{
+Slang-implemented components can interface with
 Scala or Java libraries and execute on the JVM.  Pure Slang
 components can be translated to C and then deployed on HAMR-built
 Linux or seL4 systems.  On CASE, Slang has been used for prototyping
 components, but primary development of directly implemented
-components has used C.  For high-assurance components specified
+components has used C.}
+For high-assurance components specified
 using SPLAT, HAMR automatically integrates code generated from
 SPLAT into the component binary code using CakeML's Foreign
 Function Interface (FFI) mechanism.
@@ -34,7 +37,7 @@ Function Interface (FFI) mechanism.
 HAMR generates component infrastructure and integration code
 implementing the semantics of AADL-compliant thread scheduling,
 thread dispatching, and port-based communication.
-For port communication, both shared memory communication (AADL
+For port communication, \remove{both} shared memory communication (AADL
 data ports), buffered messaging (AADL event data ports), and
 buffered notification (AADL event ports) are supported.
 HAMR code generation is staged using a translation architecture
@@ -118,6 +121,7 @@ formally verified, e.g., by applying the Slang Logika formal
 verification capability to the Slang reference implementation of the
 AADL run-time.  
 
+\remove{
 HAMR plays a key role in integrating formal methods
 at different levels of abstraction at multiple points throughout
 the development process, enabling those methods to be applied
@@ -140,6 +144,7 @@ different levels of abstraction, while
 also integrating parts of the implementation that are assured
 using traditional methods.   In addition, the strong partitioning
 of seL4 enables the controlled integration of untrusted components.
+}
 
 %SOME OF THIS LAST PARAGRAPH MIGHT BE BETTER IN THE CONCLUSION.
 
