@@ -3,7 +3,8 @@
 	\begin{center}
 	  \includegraphics[width=\textwidth]{./figs/sw-hardened.png}
   \end{center}
-	\caption{Cyber-resilient software architecture for UAV surveillance system. } 
+	\caption{Cyber-resilient software architecture for UAV surveillance system 
+	with new high-asurance components (green) and virtual machine hosting legacy software (red).} 
 	\label{fig:sw-hardened} 
 \end{figure*}
 
@@ -15,7 +16,7 @@ and ensure its cyber-resiliency.
 
 The system includes a ground station computer and the aircraft, consisting of a mission computer and 
 a flight control computer.  
-The baseline (unhardened) mission computer included the four software components colored white: 
+The baseline (unhardened) mission computer included only four of the software components shown in \figref{fig:sw-hardened}: 
 the radio for communication with the ground station (\emph{Radio}), 
 the mission planning service (\emph{Planner}, provided as legacy software running on Linux), 
 flight plan waypoint segmentation (\emph{WaypointManager}), 
