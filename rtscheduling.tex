@@ -30,7 +30,11 @@ time allotments. Thus, each thread executes within its own
 well-defined timing constraints without interference from other threads.
 System designers are responsible for the
 creation of a valid static cyclic schedule that
-satisfies all the application's timing requirements.
+satisfies all application timing requirements.
+To guarantee that all real-time deadlines are met, system designers must 
+also ensure (by test or analysis) that thread worst-case execution times
+do not exceed their scheduled allotments.  This is not currently part of 
+the \briefcase\ tools.  
 
 \briefcase\ generates a start-of-frame synchronization signal for each thread using
 a special thread called the Pacer, which sends periodic signals

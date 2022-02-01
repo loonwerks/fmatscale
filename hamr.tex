@@ -7,11 +7,18 @@ Rapid engineering for embedded systems tool (\hamr)
 AADL code generation framework.  In the CASE project, HAMR is primarily used
 to generate code for deployment for the seL4 microkernel, but system and component
 prototyping is also supported utilizing HAMR's code generation capability
-for the Java Virtual Machine (JVM) and Linux.  One of the
-primary objectives is to support system builds that
-leverage seL4 micro-kernel partitioning and information flow
-guarantees to achieve the AADL-specified component separation and
+for the Java Virtual Machine (JVM) and Linux.  
+
+Using seL4 as a foundation, HAMR enables
+AADL to be used as a model-based development and systems
+engineering framework for seL4-based applications.
+One of the primary objectives is to support system builds that
+leverage seL4 separation and information flow
+guarantees to achieve the AADL-specified component isolation and
 inter-component communication needed for cyber-resiliency.
+HAMR ensures that seL4 is configured to permit the exact
+inter-component information flows analyzed and visualized by Awas at
+the model level.
 
 For each AADL thread component, HAMR generates a thread code
 skeleton and application programming interfaces (APIs) for communicating over the ports declared on
@@ -37,7 +44,7 @@ Function Interface (FFI) mechanism.
 HAMR generates component infrastructure and integration code
 implementing the semantics of AADL-compliant thread scheduling,
 thread dispatching, and port-based communication.
-For port communication, \remove{both} shared memory communication (AADL
+For port communication, shared memory communication (AADL
 data ports), buffered messaging (AADL event data ports), and
 buffered notification (AADL event ports) are supported.
 HAMR code generation is staged using a translation architecture
@@ -54,7 +61,7 @@ The AGREE contract language and SPLAT
 code generation framework have been designed to align with the AADL
 semantics reflected in this reference implementation.  
 
-To generate deployments on seL4, HAMR makes heavy use of the
+To generate deployments on seL4, HAMR makes use of the
 component architecture for microkernel-based embedded systems
 (CAmkES) code-generation framework.   The CAmkES input
 language supports specification
@@ -117,9 +124,10 @@ AADL model.
 These properties were chosen to focus on
 cyber-resiliency needs, but other
 key semantic properties of the AADL run-time can be incrementally
-formally verified, e.g., by applying the Slang Logika formal
+formally verified.
+\remove{ e.g., by applying the Slang Logika formal
 verification capability to the Slang reference implementation of the
-AADL run-time.  
+AADL run-time.}  
 
 \remove{
 HAMR plays a key role in integrating formal methods

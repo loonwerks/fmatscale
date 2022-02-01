@@ -8,7 +8,7 @@ expectations the component has on the environment, while guarantees describe bou
 of the component. 
 
 AGREE uses k-induction as the underlying algorithm for model checking.  AADL models and AGREE
-contracts are first translated into the Lustre language, including verification conditions for consistency
+contracts are first translated into the Lustre language \cite{lustre}, including verification conditions for consistency
 and correctness of the contracts.  The model checker then attempts to find any model execution traces
 that would violate these conditions using one of several Satisfiability Modulo Theories (SMT) solvers. 
 If the model checker covers all reachable states in the model without finding a violation then the properties are proved. 
