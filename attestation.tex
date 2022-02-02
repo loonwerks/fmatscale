@@ -10,15 +10,16 @@ that cannot otherwise be verified.  We construct a verified remote
 attestation infrastructure around the legacy target that generates
 run-time and boot-time evidence.
 
-In the UAV example, we wish to ensure that the aircraft will only accept
-commands from trustworthy (non-compromised) ground stations.  
+In the UAV example, we wish to ensure that the aircraft will only
+accept commands from trustworthy (non-compromised) ground stations.
 Our approach adds three attestation managers to the seL4-based
-architecture in \figref{fig:sw-hardened}.  Each attestation
-manager executes protocols specified by Copland~\cite{Ramsdell:2019aa}
+architecture in \figref{fig:sw-hardened}.  Each attestation manager
+executes protocols specified by Copland~\cite{Ramsdell:2019aa}
 phrases.  Copland is a formal specification language designed for
 writing attestation protocols that are both verifiable and executable.
-The attestation managers themselves are written and verified using
-CakeML and Coq.
+The attestation managers themselves are written using Coq to verify
+attestation protocols and protocol interpreters, then synthesizing
+models to CakeML.
 
 The \emph{AttestationManager} on the Mission Computer makes
 attestation requests and appraises the results.  A protocol request and nonce are
