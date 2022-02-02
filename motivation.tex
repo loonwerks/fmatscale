@@ -64,6 +64,10 @@ The target platform requires a static real-time schedule that is provided in the
 A transformation on the assume-guarantee contracts incorporates that schedule into the model
 for verification of the cyber requirements.
 
+Finally, cyber-resilient mission computer software is automatically generated from the verified 
+AADL model for execution by a fully verified version of seL4 running on an ODROID-XU4 (ARM Cortex-A7 CPU).  
+We successfully demonstrated the resilience of the system against a variety of cyber attacks. 
+
 %\resolint\ certifies the hardened model is ready for synthesis.
 %\splat\ synthesizes high-assurance components from their \agree\ contracts to the target platform.
 %It includes proof certificates that the binaries have assumptions that are no stronger than those on
