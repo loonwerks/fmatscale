@@ -16,7 +16,10 @@ correctness of the translation using the HOL4 theorem proving system.
 %\cite{hol4:overview}.
 The generated code is \emph{CakeML}, a dialect of Standard ML
 %\cite{SML97}
-possessing a fully verified compiler \cite{cakeml}.
+possessing a fully verified compiler \cite{cakeml}. The non-real-time 
+aspects of the language (e.g., garbage collection) have not been 
+an issue in our use as a synthesis target, but this should be 
+considered in applications where strict predictability is required. 
 
 %\begin{figure}[h]
 %\begin{center}
