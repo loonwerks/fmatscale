@@ -1,17 +1,19 @@
 
-As systems become more complex, composition of components and 
+As systems become more complex, 
+\remove{composition of components and 
 systems presents safety and security challenges that span
 many sub-systems.  Subsystems and components may originate from
 different organizations, many of which may not have a complete
 understanding of system information flows and potential impacts of
-security attacks.  Thus, it is essential to have trustworthy methods
-of developing common understanding of dependencies in the system and
-the respective responsibilities of the involved vendors.  
-
+security attacks.  Thus,} 
+it is essential to have trustworthy methods
+to provide a common understanding of dependencies in the system and
+the respective responsibilities of the developers who may be from separate organizations.  
+%
 The Awas~\cite{awas} AADL information flow analyzer and visualizer has been 
-applied to enable developers and auditors to understand, reason,
-explore, and visualize system dependencies and information flow at
-scale across components and sub-systems.  Awas processes the AADL
+applied to enable developers and auditors to understand, reason about,
+explore, and visualize system dependencies and information flows at
+scale across components and subsystems.  Awas processes the AADL
 system architecture model, specifically its inter-component connection
 descriptions and intra-component flow specifications, to provide
 formal system-wide impact and flow analyses.
@@ -34,10 +36,10 @@ In our UAV example, Awas can compute and visualize how the information in Ground
 as well as the components or ports that may directly or indirectly consume data derived from that information.
 Awas supports a number of forms of forward and backward interactive information queries.
 Using the Awas script-based query language, one can specify and check more complex properties, e.g.,
-that information must flows through specific ports or components.
+that information must flow through specific ports or components.
 These end-to-end flow specifications are often useful for supporting verification of the
 effectiveness of cyber-resiliency components.   An Awas specification can state that
-information from untrusted components such as the Ground Station always flow through the
+information from untrusted components such as the Ground Station always flows through the
 Attestation Gate and filter components before reaching the Flight Control or other components
 that make critical decisions about the flight or mission of the UAV.
 

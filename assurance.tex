@@ -1,11 +1,15 @@
-An important aspect of our work has been to structure formalizations and proofs by following
-the AADL model of the system. 
+%An important aspect of our work has been to structure formalizations and proofs by following
+%the AADL model of the system. 
 %In other work, we did this through the use of formal
 %assume-guarantee contracts that correspond to the requirements for each component~\cite{HACMS}. 
-We have found that in assuring the cyber-resiliency properties of aircraft designs we need to integrate
+Assurance activities for high-integrity systems in the aerospace domain are currently driven 
+by industry and government standards such as DO-178C and MIL-HDBK-516C.  The use of assurance 
+cases to show conformance to standards (or provide alternate means of assurance) is being pursued 
+in separate research programs.  
+In addition, we have found that in assuring the cyber-resiliency properties of aircraft designs we need to integrate
 different kinds of evidence with varying levels of formality. This has been our motivation
 % to explore assurance case methods.
-for exploring assurance case methods.
+for incorporating assurance case methods in BriefCASE.
 
 In previous work, we developed the {\em Resolute} language and tool
 %~\cite{resolute2014},
@@ -45,18 +49,19 @@ evidence required to support the cyber-resiliency goals of the system. For examp
 \texttt{add\_filter} strategy is automatically inserted into the assurance case when the
 \textit{Filter} transformation is performed, and includes logical rules that Resolute uses to
 determine whether the claim of well-formed messages is supported by evidence. The \texttt{add\_filter}
-definition 
-%(shown in Figure~\ref{fig:resolute-add-filter}) 
-includes the following sub-goals:
+definition includes the following sub-goals (shown in \figref{fig:assurance-case}):
 \begin{itemize} 
-\item \texttt{filter\_exists} -- The filter component is still present in the model and has not be 
+\item Component property implemented -- The filter has been implemented correctly 
+to meet its AGREE specification, as shown by the proof produced by SPLAT.
+\item Filter is connected -- The filter component is still present at the correct location in the model and has not been 
 altered or deleted by subsequent design changes. 
-\item \texttt{filter\_not\_bypassed} -- There is no alternate information flow in the model that 
+\item Filter cannot be bypassed -- There is no alternate information flow in the model that 
 would allow the filter to be bypassed and therefore not perform its function.   
-\item \texttt{filter\_implemented\_correctly} -- The filter has been implemented correctly 
-to meet its AGREE specification.  
+\item AGREE properties are valid -- The filter specification has been verified by AGREE to meet its
+intended purpose in the system.   
 \end{itemize}
-These sub-goals can be seen (in blue) in the zoomed in subtree in \figref{fig:assurance-case}.
+
+\remove{These sub-goals can be seen (in blue) in the zoomed in subtree in \figref{fig:assurance-case}.
 The first two sub-goals are supported by evidence obtained by examining the structure of the model. 
 If at a later time during development the model is inadvertently altered in a way that renders the transformation
 ineffective, Resolute will be unable to substantiate the evidential statements and will
@@ -65,12 +70,9 @@ produce a failing assurance case.
 %The third subgoal is satisfied through the use of SPLAT. SPLAT not only generates the implementation code for high-assurance components, but it also produces a proof that the generated code correctly implements its AGREE specification. 
 For the third subgoal, Resolute uses the existence of the
 SPLAT proof corresponding to the filter's AGREE specification
-as evidence that the component was implemented correctly.
+as evidence that the component was implemented correctly.}
 
-Assurance activities for high-integrity systems in the aerospace domain are currently driven 
-by industry and government standards such as DO-178C and MIL-HDBK-516C.  The use of assurance 
-cases to show conformance to standards (or provide alternate means of assurance) is being pursued 
-in separate research programs.  
+
 
 % Resolute can determine whether an assurance case passes or fails
 
