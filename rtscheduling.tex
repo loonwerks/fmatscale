@@ -24,17 +24,25 @@ deployed for decades.
 We implemented a static cyclic scheduling
 approach using the \selFour\ domain scheduler, where a fixed schedule
 defines an ordered sequence of static execution slots. Each slot has a
-duration and a partition identifier.  \selFour\ ensures that the
-temporal domain, and any threads running in it, will not exceed their defined
-time allotments. Thus, each thread executes within its own
-well-defined timing constraints without interference from other threads.
-System designers are responsible for the
-creation of a valid static cyclic schedule that
-satisfies all application timing requirements.
-To guarantee that all real-time deadlines are met, system designers must 
-also ensure (by test or analysis) that thread worst-case execution times
-do not exceed their scheduled allotments.  This is not currently part of 
-the \briefcase\ tools.  
+duration and a partition identifier.  
+%\selFour\ ensures that the
+%temporal domain, and any threads running in it, will not exceed their defined
+%time allotments. Thus, each thread executes within its own
+%well-defined timing constraints without interference from other threads.
+%System designers are responsible for the
+%creation of a valid static cyclic schedule that
+%satisfies all application timing requirements.
+%To guarantee that all real-time deadlines are met, system designers must 
+%also ensure (by test or analysis) that thread worst-case execution times
+%do not exceed their scheduled allotments.  This is not currently part of 
+%the \briefcase\ tools.  
+\selFour\ guarantees the start and end times for each temporal domain slice, according to the
+compile-time static cyclic schedule. This precisely constrains when each thread may execute, backed
+by \selFour\ verification proofs. System designers are responsible for the determining the temporal
+requirements, such as worst case execution times (e.g., by test or analysis) and latency bounds, of
+each thread, based on mission requirements. These requirements may be captured in the AADL model,
+and offline tools are available to generate the static cyclic schedule based on the model.
+Determining the mission temporal requirements is not part of the BriefCASE tools.
 
 \briefcase\ generates a start-of-frame synchronization signal for each thread using
 a special thread called the Pacer, which sends periodic signals
