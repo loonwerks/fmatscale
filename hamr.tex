@@ -23,9 +23,10 @@ the model level.
 For each AADL thread component, HAMR generates a thread code
 skeleton and application programming interfaces (APIs) for communicating over the ports declared on
 the component.  For components that are implemented manually, the
-developer fills out the thread skeleton with application code,
+developer fills out the thread skeleton with application code.
+\remove{,
 calling the port APIs, libraries, and component-specific
-developer-implemented support code as needed.
+developer-implemented support code as needed.}
 HAMR supports coding component application logic in either C,
 Slang~\cite{slang} (a high-assurance subset of Scala that can be translated to
 C), or CakeML. 
@@ -35,11 +36,11 @@ Scala or Java libraries and execute on the JVM.  Pure Slang
 components can be translated to C and then deployed on HAMR-built
 Linux or seL4 systems.  On CASE, Slang has been used for prototyping
 components, but primary development of directly implemented
-components has used C.}
+components has used C.
 For high-assurance components specified
 using SPLAT, HAMR automatically integrates code generated from
 SPLAT into the component binary code using CakeML's Foreign
-Function Interface (FFI) mechanism.
+Function Interface (FFI) mechanism.}
 
 HAMR generates component infrastructure and integration code
 implementing the semantics of AADL-compliant thread scheduling,
@@ -57,16 +58,27 @@ can be viewed as a high-level reference implementation of AADL
 semantics.   Automatic translation of this reference
 implementation to C on different platforms helps establish
 semantic consistency across those platforms. 
-The AGREE contract language and SPLAT
+\remove{The AGREE contract language and SPLAT
 code generation framework have been designed to align with the AADL
-semantics reflected in this reference implementation.  
+semantics reflected in this reference implementation.}
 
-To generate deployments on seL4, HAMR makes use of the
+The seL4 deployment uses the component architecture for microkernel-based embedded systems
+(CAmkES) code-generation framework to configure the microkernel.
+The HAMR generated CAmkES directly encodes the AADL model's component and communication
+topology and includes the AADL run-time infrastructure with its thread scheduling.
+HAMR leverages the existing seL4 domain scheduler to enforce time partitioning and provide static cyclic scheduling.
+
+HAMR additionally supports Linux-based virtual machine components in the seL4 deployment and the ability to run the entire system on the QEMU emulator.
+HAMR automatically configures virtual machine based components, and this feature is used to sandbox the untrusted legacy code for the Mission Planner in the example UAV system.
+The QEMU emulator support facilitates rapid prototyping for test, debug, and analysis, and it enables automated regression testing.
+
+\remove{To generate deployments on seL4, HAMR makes use of the
 component architecture for microkernel-based embedded systems
-(CAmkES) code-generation framework.   The CAmkES input
+(CAmkES) code-generation framework. The CAmkES input
 language supports specification
 of seL4 partitioning and communication topology using
-component-oriented idioms.  The CAmKES translator generates an
+component-oriented idioms.  
+The CAmKES translator generates an
 seL4 \emph{Capability Description Language (CapDL)} file that
 configures the seL4 kernel to support protected memory blocks
 and permission-based reading and writing of each block as
@@ -79,11 +91,12 @@ to support the AADL run-time infrastructure, in particular,
 thread scheduling.
 To enforce time partitioning, HAMR uses the seL4 domain
 scheduler to support static cyclic scheduling. 
+}
 
-HAMR also provides automated support for configuring Linux-based
+\remove{HAMR also provides automated support for configuring Linux-based
 virtual machines as components within the seL4 deployed system. 
 In the example UAV system, this feature has been used to sandbox untrusted legacy code
-for the Mission Planner component.
+for the Mission Planner component.}
 
 %In CASE workflows,
 %the FASTAR AADL scheduling tool from Adventium Labs was used
@@ -91,40 +104,43 @@ for the Mission Planner component.
 %was adjusted as needed based on timing experiments (this was
 %needed primarily for VM components).
 
-HAMR-generated seL4 systems can be executed on the QEMU emulator
+\remove{HAMR-generated seL4 systems can be executed on the QEMU emulator
 before deployment to a development board or
 production hardware.  This prototyping capability significantly speeds up development
 iterations and enables the development of a sophisticated
-automated regression testing framework.
+automated regression testing framework.}
 
-While we have not yet completed full formal verification of
+\remove{While we have not yet completed full formal verification of
 the HAMR Slang-based reference implementation and code generation
 pipeline, information flow preservation is a key property that 
 illustrates how one might approach formal verification of 
 other important semantic properties.
-Specifically, HAMR generates flow graphs reflecting the
-inter-component information flow at both the AADL architecture
-level and the seL4 CAmkES level.  In addition to multiple
-visualizations and auditable traceability artifacts, HAMR
+Specifically, }
+
+HAMR generates flow graphs reflecting the inter-component information flow at both the AADL architecture level and the CAmkES level for the seL4 deployment.  
+These are both visualized for manual inspection and given SMT-based representations for formal reasoning.
+The SMT-based representations are used to prove the following:
+
+\remove{In addition to multiple visualizations and traceability artifacts that can be audited, HAMR
 generates SMT-based representations of the flow graphs and
 traceability relationships between them.  Formalized
 theorems for information flow preservation can then be represented as
 SMT assertions.  This enables SMT solvers to automatically prove
 the following properties for any HAMR-generated seL4 deployment:
+}
 
 \begin{enumerate}
-\item All AADL flows are implemented -- For every inter-component information
+\item The modeled flows are in the CAmkES. \remove{All AADL flows are implemented -- For every inter-component information
 flow present in the AADL model, that flow is provisioned in the
-generated seL4 kernel configuration.
-\item No extraneous flows are implemented -- For
+generated seL4 kernel configuration.}
+\item No extraneous flows are in the CAmkES.\remove{ -- For
 each inter-component flows provisioned in the seL4 kernel, that
 flow is represented as an inter-component connection in the
-AADL model.   
+AADL model.}   
 \end{enumerate}
-These properties were chosen to focus on
-cyber-resiliency needs, but other
-key semantic properties of the AADL run-time can be incrementally
-formally verified.
+These properties focus on
+cyber-resiliency, but other
+key semantic properties can be verified as well.
 \remove{ e.g., by applying the Slang Logika formal
 verification capability to the Slang reference implementation of the
 AADL run-time.}  
