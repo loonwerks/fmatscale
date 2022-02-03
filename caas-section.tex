@@ -77,9 +77,10 @@ components but their implementation code had to be manually written due to the c
 off-the-shelf networking technologies.  Automating the synthesis of network adapter and proxy components
 is future work.
 
-The commercial board used for development and the Collins hardware equivalent (both ARM Cortex-A53 CPUs)
-in the helicopter demonstration system used the same seL4 code base as the \figref{fig:sw-hardened} example.  
-However, seL4 proofs are not fully verified for these hardware platforms.  
+The commercial board used for development and the Collins hardware equivalent
+in the helicopter demonstration system (both ARM Cortex-A53 CPUs) use the same seL4 code base as the \figref{fig:sw-hardened} example.  
+However, the seL4 proofs have not been updated for these hardware platforms and so they have not been fully verified.
+We expect that there would be only minor differences from the existing proofs for similar platforms.
 
 As initial users of the BriefCASE tools, the CAAS engineers encountered some limitations in the
 specification expressiveness and documentation, as might be
