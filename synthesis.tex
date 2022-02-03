@@ -2,24 +2,34 @@ The correctness of the high-assurance components inserted
 by \briefcase \ transformations means that each such component
 must meet its \agree{} contract. This obligation is addressed by
 \emph{formal synthesis}, using the Semantic Properties of Language
-and Automata Theory (\splat) tool.  Given a sufficiently detailed formal
-specification of component behavior, \splat{} generates code,
-as well as proofs showing that the generated code is
-correctly compiled and meets its specification \cite{case-models-2021}.
+and Automata Theory (\splat) tool.  
+% Given a sufficiently detailed formal
+% specification of component behavior, \splat{} generates code,
+% as well as proofs showing that the generated code is
+% correctly compiled and meets its specification \cite{case-models-2021}.
+\splat{} generates code to implement the AGREE contract and then proves that its implementation exactly preserves the meaning of the contract all the way down to the binary for the target platform \cite{case-models-2021}.
 
-The formal languages that filters, gates, and monitors are generated
-from include regular expressions, contiguity types, and Lustre.
-For each of these languages, we have infrastructure
+\splat{} uses the HOL4 theorem proving system to implement the synthesis and prove its correctness relative to the contract.
+The synthesis targets a dialect of Standard ML called \emph{CakeML} and uses CakeML's fully verified compiler to render the final binary \cite{cakeml}.
+CakeML is not a real-time language since it is garbage collected, and although that has yet to be an issue in our use cases, it should be considered in applications where strict predictability is required.
+
+The proof from \splat{} shows equivalence between the contract and the synthesized CakeML and then leverages the existing CakeML compiler proof for the rest.
+A final step of the proof reasons about the perpetual re-execution of the code as scheduled in a real-time environment.
+The modeling, relevant properties, and proof of that step is discussed in \cite{johannes:repeat}.
+
+% The formal languages that filters, gates, and monitors are generated
+% from include regular expressions, contiguity types, and Lustre.
+% For each of these languages, we have infrastructure
 %(see Figure \ref{fig:synthesis})
-that (a) translates formal specifications to code and (b) proves the
-correctness of the translation using the HOL4 theorem proving system.
+% that (a) translates formal specifications to code and (b) proves the
+% correctness of the translation using the HOL4 theorem proving system.
 %\cite{hol4:overview}.
-The generated code is \emph{CakeML}, a dialect of Standard ML
+% The generated code is \emph{CakeML}, a dialect of Standard ML
 %\cite{SML97}
-possessing a fully verified compiler \cite{cakeml}. The non-real-time 
-aspects of the language (e.g., garbage collection) have not been 
-an issue in our use as a synthesis target, but this should be 
-considered in applications where strict predictability is required. 
+% possessing a fully verified compiler \cite{cakeml}. The non-real-time 
+% aspects of the language (e.g., garbage collection) have not been 
+% an issue in our use as a synthesis target, but this should be 
+% considered in applications where strict predictability is required. 
 
 %\begin{figure}[h]
 %\begin{center}
@@ -38,33 +48,33 @@ considered in applications where strict predictability is required.
 %\caption{\splat{} Verified Synthesis Path.\label{fig:synthesis}}
 %\end{figure}
 
-Regular expressions and contiguity types are formalisms well-suited
-for expressing classes of constraints on the data passed in
-messages. Thus, they provide a useful basis for expressing
-filters. Regular expressions compile to efficient finite state
-automata, generating a correctness proof along the way.
+% Regular expressions and contiguity types are formalisms well-suited
+% for expressing classes of constraints on the data passed in
+% messages. Thus, they provide a useful basis for expressing
+% filters. Regular expressions compile to efficient finite state
+% automata, generating a correctness proof along the way.
 %\cite{case-verified-filter}.
-We have also synthesized regular
-expressions to hardware using this proof-producing
-technique.
+% We have also synthesized regular
+% expressions to hardware using this proof-producing
+% technique.
 % \cite{formal-filter-synth-langsec}.
-Contiguity types can capture more complex
-data formats, including variable-length arrays and union structures
-which are used in the Mission Planner found in our UAV example.
+% Contiguity types can capture more complex
+% data formats, including variable-length arrays and union structures
+% which are used in the Mission Planner found in our UAV example.
 %this level of expressiveness was needed to handle the messages of UxAS.
-We deploy a verified contiguity-type based parser generator
+% We deploy a verified contiguity-type based parser generator
 %\cite{contiguity-types}
-to decode and check that the serialized message data is well-formed
-relative to its specification.
+% to decode and check that the serialized message data is well-formed
+% relative to its specification.
 
-Gates and monitors can require arbitrarily complex computations for
-their work; hence we also support code generation from Lustre. We have
-formalized the semantics of Lustre and are using it as the basis for a
-formal translation to CakeML.
+% Gates and monitors can require arbitrarily complex computations for
+% their work; hence we also support code generation from Lustre. We have
+% formalized the semantics of Lustre and are using it as the basis for a
+% formal translation to CakeML.
 
-Since code generated from \splat{} is deployed as a scheduled thread
-in a real-time environment, there are two aspects to consider: (1)
-correctness of a `one shot` thread execution (discussed above), and
-(2) correctness of the perpetual re-execution of the thread.
-Modeling the latter and proving relevant properties is discussed in
-\cite{johannes:repeat}.
+% Since code generated from \splat{} is deployed as a scheduled thread
+% in a real-time environment, there are two aspects to consider: (1)
+% correctness of a `one shot` thread execution (discussed above), and
+% (2) correctness of the perpetual re-execution of the thread.
+% Modeling the latter and proving relevant properties is discussed in
+% \cite{johannes:repeat}.
